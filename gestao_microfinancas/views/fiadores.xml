@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="fiadores_form" model="ir.ui.view">
+            <field name="name">Fiadores</field>
+            <field name="model">fiador</field>
+            <field name="arch" type="xml">
+                <form string="Fiador">
+                    <sheet>
+                        <div>
+                            <label for="title" string="" style="width:20px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Lugar Trabalho"/>
+                            <field name="lugar_trabalho" style="color:Blue; width:500px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Pessoa" style="width:95px"/>
+                            <field name="pessoa_id" style="width:150px"/>
+                            <label for="title" string="" style="width:130px"/>
+                            <label for="title" string="Profissão"/>
+                            <field name="professao_id" style="width:150px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Telefone" style="width:95px"/>
+                            <field name="telefone" style="width:150px"/>
+                            <label for="title" string="" style="width:115px"/>
+                            <label for="title" string="Vencimento"/>
+                            <field name="vencimento" style="width:150px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Propornente" style="width:95px"/>
+                            <field name="propornente_ids" style="width:500px" widget="many2many_tags"/>
+                        </div>
+                        <!--<div>
+                            <label for="title" string="Avalista" style="width:95px"/>
+                            <field name="avalista" style="color:Blue; width:500px"/>
+                        </div>-->
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="form_fiador_search_view" model="ir.ui.view">
+            <field name="name">Fiadores</field>
+            <field name="model">fiador</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="id"/>
+                </search>
+            </field>
+        </record>
+        <record id="fiadores_tree" model="ir.ui.view">
+            <field name="name">Fiadores</field>
+            <field name="model">fiador</field>
+            <field name="arch" type="xml">
+                <tree string="Fiador">
+                    <field name="codigo"/>
+                    <field name="professao_id"/>
+                    <field name="utilizador_id"/>
+                    <field name="id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="sequ_fiadores_codigo" model="ir.sequence">
+            <field name="name">Fiadores</field>
+            <field name="code">fiador.fiador.codigo</field>
+            <field name="prefix"></field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="sequ_fiadores_numero" model="ir.sequence">
+            <field name="name">Fiadores</field>
+            <field name="code">fiador.fiador.numero</field>
+            <field name="prefix"></field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="fiadores_act_window" model="ir.actions.act_window">
+            <field name="name">Fiadores</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fiador</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Criar um novo Fiadores.
+                </p>
+                <p>
+                    Organize suas atividades (planeje tarefas, acompanhe problemas, planilhas de Fiadores) para projetos
+                    internos, pessoais ou de clientes.
+                </p>
+            </field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="fiadores_menu" name="Fiadores" parent="gestao_pessoas_cliente_menu" action="fiadores_act_window"
+                  sequence="80"/>
+        <record id="aval_form" model="ir.ui.view">
+            <field name="name">Avalista</field>
+            <field name="model">avalista</field>
+            <field name="arch" type="xml">
+                <form string="Avalista">
+                    <sheet>
+                        <group>
+                            <field name="codigo"/>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="aval_tree" model="ir.ui.view">
+            <field name="name">Avalista</field>
+            <field name="model">avalista</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="codigo"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="sequ_avalist_codigo" model="ir.sequence">
+            <field name="name">Avalista</field>
+            <field name="code">avalista</field>
+            <field name="prefix"></field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <record id="aval_act_window" model="ir.actions.act_window">
+            <field name="name">Avalista</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">avalista</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+        <!--<menuitem id="aval_act_window_menu" name="Avalista" parent="gestao_pessoas_cliente_menu"
+                  action="aval_act_window" sequence="90"/>-->
+    </data>
+</odoo>

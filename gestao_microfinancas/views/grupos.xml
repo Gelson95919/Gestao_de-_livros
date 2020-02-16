@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="grupo_form" model="ir.ui.view">
+            <field name="name">Grupo</field>
+            <field name="model">grupo</field>
+            <field name="arch" type="xml">
+                <form string="Grupo">
+                    <sheet>
+                        <div>
+                            <label for="title" string="" style="width:20px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Nome" style="width:95px"/>
+                            <field name="name" style="width:150px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="" style="width:20px"/>
+                        </div>
+                        <div>
+                            <label for="title"
+                                   string="Membros________________________________________________________________________________________________________________________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                        </div>
+                        <div>
+                            <field name="lista_group">
+                                <tree editable="bottomn" string="membro">
+                                    <field name="codigo"/>
+                                    <field name="cliente"/>
+                                    <field name="coordenador"/>
+                                </tree>
+                            </field>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="grupo_tree" model="ir.ui.view">
+            <field name="name">Grupo</field>
+            <field name="model">grupo</field>
+            <field name="arch" type="xml">
+                <tree string="Grupo">
+                    <field name="codigo"/>
+                    <field name="name"/>
+                    <field name="utilizador_id"/>
+
+                </tree>
+            </field>
+        </record>
+        <record id="grupo_codigo" model="ir.sequence">
+            <field name="name">Grupo</field>
+            <field name="code">grupo.codigo</field>
+            <field name="prefix"></field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="grupo_act_window" model="ir.actions.act_window">
+            <field name="name">Grupo</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">grupo</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Criar um novo Grupo.
+                </p>
+                <p>
+                    Organize suas atividades (planeje tarefas, acompanhe problemas, planilhas de Grupo) para projetos
+                    internos, pessoais ou de clientes.
+                </p>
+            </field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="grupo_menu" name="Grupos" parent="gestao_grupo_menu" action="grupo_act_window" sequence="80"/>
+
+        <record id="menbro_grupo_form" model="ir.ui.view"><!--Este formulario nao aparece no menu-->
+            <field name="name">Membro de Grupo</field>
+            <field name="model">membro</field>
+            <field name="arch" type="xml">
+                <form string="Membro de Grupo">
+                    <sheet>
+                        <div>
+                            <label for="title" string="Cliente" style="width:95px"/>
+                            <field name="cliente" style="width:150px"/>
+                            <label for="title" string="" style="width:200px"/>
+                            <label for="title" string="Coordenador" style="width:95px"/>
+                            <field name="coordenador"/>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="menbro_grupo_act_window" model="ir.actions.act_window">
+            <field name="name">Membro de Grupo</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">membro</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <!--<menuitem id="menbro_grupo_menu" name="Membro" parent="gestao_grupo_menu" action="menbro_grupo_act_window" sequence="80"/>-->
+    </data>
+</odoo>

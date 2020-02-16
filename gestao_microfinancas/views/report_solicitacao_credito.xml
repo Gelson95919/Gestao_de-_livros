@@ -1,0 +1,1309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record model="report.paperformat" id="papelformficha_solicit_credito">
+            <field name="name">paperformat.Solicitacao Credito</field>
+            <field name="default" eval="True"/>
+            <field name="format">A3</field>
+            <field name="page_width">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">40</field>
+            <field name="margin_right">5</field>
+            <field name="margin_bottom">5</field>
+            <field name="margin_left">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">30</field>
+            <field name="dpi">95</field>
+        </record>
+        <report
+                id="fich_solicitacao_credito"
+                model="solicitacao.credito"
+                string="Ficha Solicitação Credito"
+                name="gestao_microfinancas.solicitacao_credito_view"
+                file="gestao_microfinancas.solicitacao_credito_form"
+                paperformat="papelformficha_solicit_credito"
+                report_type="qweb-pdf"
+                menu="True"/>
+
+        <template id="solicitacao_credito_view">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div style="border:1px solid black; text-center; margin-left: -1px; height: 33px; margin-top:3px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                            <strong>
+                                <h2 class="text-center">FICHA CADASTRAL E SOLICITAÇÃO DE CREDITO</h2>
+                            </strong>
+                        </div>
+                        <div style="border:1px solid black;  width:100%; margin-left: -1px; height: 43px; margin-top:-1px; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: right;
+
+                                                                          display: -moz-box; -moz-box-orient: horizontal; ">
+                            <div style="border-right:1px solid black; padding: 8px; margin-top: -1px; margin-left: -1px;  width:452px;">
+                                <p>ILHA:</p> <!-- <span t-esc="doc['name']"/>-->
+                            </div>
+                            <div style="border:0px solid black; padding: 8px; margin-top: -1px; margin-left: -1px; width:452px;">
+                                <p>CIDADE:</p> <!--<span t-esc="doc['name']"/>-->
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                            <div style="border-right:1px solid black; padding: 8px; margin-top: -1px; margin-left: -1px; width:200px; -webkit-box-flex: 1;">
+                                <th>AGENTE:</th>
+                                <strong>
+                                    <span t-esc="o.nome_util"/>
+                                </strong>
+                            </div>
+                            <div style="border:0px solid black; padding: 8px; width:200px; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0;">
+                                <th>DATA:</th>
+                                <strong>
+                                    <span t-esc="o.data"/>
+                                </strong>
+                            </div>
+
+                        </div>
+                        <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                            <div style="border:0px solid black;  padding: 8px; width:200px;">
+                                <p>
+                                    <strong>HORIGEM DA DEMANDA</strong>
+                                </p>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black;  height: 106px; margin-top: -1px; width:100%; margin-left: -1px; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal;
+                                                                          display: -moz-box; -moz-box-orient: horizontal; ">
+                            <div class="text-center"
+                                 style="border:0px  solid black;  margin-left: 5px; border-top:2px; width:33%; height:100px; padding: 5px; margin-top: -1px;">
+                                <div style="border:1px  solid black; width:30px; height:30px; margin-top: -2px;">
+                                    <t t-if="o.origem == '1'">
+                                        <p>X</p>
+                                    </t>
+                                </div>
+                                <div class="text-left"
+                                     style="border:0px  solid black;  margin-left: 50px; width:50%; height:30%; margin-top: -30px;">
+                                    <p>Palestra</p>
+                                </div>
+                                <div style="border:1px  solid black; width:30px; height:30px; margin-top: 8px;">
+                                    <t t-if="o.origem == '4'">
+                                        <p>X</p>
+                                    </t>
+                                </div>
+                                <div class="text-left"
+                                     style="border:0px  solid black;  margin-left: 50px; width:50%; height:30%; margin-top: -30px;">
+                                    <p>Devulgação móvel</p>
+                                </div>
+                                <div style="border:1px  solid black; width:30px; height:30px; margin-top: 7px;">
+                                    <t t-if="o.origem == '7'">
+                                        <p>X</p>
+                                    </t>
+                                </div>
+                                <div class="text-left"
+                                     style="border:0px  solid black;  margin-left: 50px; width:50%; height:30%; margin-top: -30px;">
+                                    <p>Eventos</p>
+                                </div>
+                            </div>
+                            <div class="text-center"
+                                 style="border:0px  solid black; border-top:0px; width:34%; height:100px; padding: 5px; margin-top: -1px;">
+                                <div style="border:1px  solid black; width:30px; height:30px; margin-top: -2px;">
+                                    <t t-if="o.origem == '2'">
+                                        <p>X</p>
+                                    </t>
+                                </div>
+                                <div class="text-left"
+                                     style="border:0px  solid black;  margin-left: 50px; width:50%; height:30%; margin-top: -30px;">
+                                    <p>Porta-a-Porta</p>
+                                </div>
+                                <div style="border:1px  solid black; width:30px; height:30px; margin-top: 8px;">
+                                    <t t-if="o.origem == '5'">
+                                        <p>X</p>
+                                    </t>
+                                </div>
+                                <div class="text-left"
+                                     style="border:0px  solid black;  margin-left: 50px; width:60%; height:30%; margin-top: -30px;">
+                                    <p>Indicação outro Cliente</p>
+                                </div>
+                                <div style="border:1px  solid black; width:30px; height:30px; margin-top: 7px;">
+                                    <t t-if="o.origem == '8'">
+                                        <p>X</p>
+                                    </t>
+                                </div>
+                                <div class="text-left"
+                                     style="border:0px  solid black;  margin-left: 50px; width:50%; height:30%; margin-top: -30px;">
+                                    <p>Outros meios</p>
+                                </div>
+                            </div>
+                            <div class="text-center"
+                                 style="border:0px  solid black; border-top:0px; width:33%; height:100px; padding: 5px; margin-top: -1px;">
+                                <div style="border:1px  solid black; width:30px; height:30px; margin-top: -2px;">
+                                    <t t-if="o.origem == '3'">
+                                        <p>X</p>
+                                    </t>
+                                </div>
+                                <div class="text-left"
+                                     style="border:0px  solid black;  margin-left: 50px; width:50%; height:30%; margin-top: -30px;">
+                                    <p>Rádio</p>
+                                </div>
+                                <div style="border:1px  solid black; width:30px; height:30px; margin-top: 8px;">
+                                    <t t-if="o.origem == '6'">
+                                        <p>X</p>
+                                    </t>
+                                </div>
+                                <div class="text-left"
+                                     style="border:0px  solid black;  margin-left: 50px; width:50%; height:30%; margin-top: -30px;">
+                                    <p>Cartazes</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                            <div style="border:0px solid black;  padding: 8px; width:400px;">
+                                <p>
+                                    <strong>CADASTRO DE PROPORNENTE</strong>
+                                </p>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px; width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                            <div style="border-right:1px solid black; padding: 8px; margin-top: -1px; margin-left: -1px; width:200px; -webkit-box-flex: 1;">
+                                <p>NOME:
+                                    <strong>
+                                        <span t-esc="o.name_client"/>
+                                    </strong>
+                                </p>
+                            </div>
+                            <div style="border:0px solid black; padding: 8px; width:200px; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0;">
+                                <p>Alcunha:
+                                    <strong>
+                                        <span t-esc="o.alcunha"/>
+                                    </strong>
+                                </p>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: justify;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: justify;">
+                            <div style="border-right:1px solid black; padding: 8px; margin-top: -1px; margin-left: -1px; width:200px; -webkit-box-flex: 1;">
+                                <p>Passaporte ou BI:
+                                    <strong>
+                                        <span t-esc="o.numero_documento"/>
+                                    </strong>
+                                </p>
+                            </div>
+                            <div style="border-right:1px solid black; padding: 8px; width:200px; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 1;">
+                                <p>NIF:
+                                    <strong>
+                                        <span t-esc="o.nif"/>
+                                    </strong>
+                                </p>
+                            </div>
+                            <div style="border:0px solid black; padding: 2px; width:200px; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0; display: -webkit-box; -webkit-box-orient: horizontal; -webkit-box-pack: left; display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+                                <div style="border:0px solid black;  padding: 1px; width:50px; margin: 5px; height: 20px;">
+                                    <p>
+                                        Sexo:
+                                    </p>
+                                </div>
+                                <div class="text-center"
+                                     style="border:1px  solid black; width:30px; height:30px; margin: 5px;">
+                                    <t t-if="o.sexo == 'True'">
+                                        <p>X</p>
+                                    </t>
+                                </div>
+                                <div style="border:0px solid black;  padding: 1px; width:20px; margin: 5px; height: 20px;">
+                                    <p>
+                                        M
+                                    </p>
+                                </div>
+                                <div class="text-center"
+                                     style="border:1px  solid black; width:30px; height:30px; margin: 5px;">
+                                    <t t-if="o.sexo == 'False'">
+                                        <p>X</p>
+                                    </t>
+                                </div>
+                                <div style="border:0px solid black;  padding: 1px; width:20px; margin: 5px; height: 20px;">
+                                    <p>
+                                        F
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: justify;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: justify;">
+                            <div style="border-right:1px solid black; padding: 8px; margin-top: -1px; margin-left: -1px; width:200px; -webkit-box-flex: 1;">
+                                <p>Local de nascimento:
+                                    <strong>
+                                        <span t-esc="o.local_nascimento"/>
+                                    </strong>
+                                </p>
+                            </div>
+                            <div style="border-right:1px solid black; padding: 8px; width:200px; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0;">
+                                <p>Data:
+                                    <strong>
+                                        <span t-esc="o.data_nascimento"/>
+                                    </strong>
+                                </p>
+                            </div>
+                            <div style="border:0px solid black; padding: 8px; width:200px; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 1;">
+                                <p>Nacionalidade:
+                                    <strong>
+                                        <span t-esc="o.nacionalidade"/>
+                                    </strong>
+                                </p>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; padding: 2px;  width:100%; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0; display: -webkit-box; -webkit-box-orient: horizontal; display: -moz-box; -moz-box-orient: horizontal;">
+                            <div style="border:0px solid black;  padding: 1px; width:150px; margin: 2px; height: 20px;">
+                                <p>
+                                    Estado Civil:
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.estado_civil == '1'">
+                                    <p>X</p>
+                                </t>
+
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:150px; margin: 5px; height: 30px;">
+                                <p>
+                                    Solteiro(a)
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.estado_civil == '2'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:100px; margin: 5px; height: 20px;">
+                                <p>
+                                    Casado(a)
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.estado_civil == '3'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:100px; margin: 5px; height: 20px;">
+                                <p>
+                                    Viúvo(a)
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.estado_civil == '4'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:100px; margin: 5px; height: 20px;">
+                                <p>
+                                    Outros
+                                </p>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                            <div style="border-right:1px solid black; padding: 8px; margin-top: -1px; margin-left: -1px; width:200px; -webkit-box-flex: 1;">
+                                <p>Nome de Cônjugue:
+                                    <strong>
+                                        <span t-esc="o.nome_conjugue"/>
+                                    </strong>
+                                </p>
+                            </div>
+                            <div style="border:0px solid black; padding: 8px; width:200px; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0;">
+                                <p>BI:</p>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                            <div style="border-right:1px solid black; padding: 8px; margin-top: -1px; margin-left: -1px; width:200px; -webkit-box-flex: 1;">
+                                <p>Endereço Residêncial:
+                                    <strong>
+                                        <span t-esc="o.endereco_prop"/>
+                                    </strong>
+                                </p>
+                            </div>
+                            <div style="border:0px solid black; padding: 8px; width:200px; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0;">
+                                <p>Tempo Residência:
+                                    <strong>
+                                        <span t-esc="o.tempo"/>
+                                    </strong>
+                                </p>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: justify;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: justify;">
+                            <div style="border-right:1px solid black; padding: 8px; margin-top: -1px; margin-left: -1px; width:200px; -webkit-box-flex: 1;">
+                                <p>Bairro:
+                                    <strong>
+                                        <span t-esc="o.name_bairo"/>
+                                    </strong>
+                                </p>
+                            </div>
+                            <div style="border-right:1px solid black; padding: 8px; width:200px; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 1;">
+                                <p>Concelho:
+                                    <strong>
+                                        <span t-esc="o.name_concelho"/>
+                                    </strong>
+                                </p>
+                            </div>
+                            <div style="border:0px solid black; padding: 8px; width:200px; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0;">
+                                <p>Ilha:
+                                    <strong>
+                                        <span t-esc="o.name_ilha"/>
+                                    </strong>
+                                </p>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: justify;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: justify;">
+                            <div style="border-right:1px solid black; padding: 8px; margin-top: -1px; margin-left: -1px; width:200px; -webkit-box-flex: 0;">
+                                <p>Telefone Fixo:
+                                    <strong>
+                                        <span t-esc="o.telefone_fixo"/>
+                                    </strong>
+                                </p>
+                            </div>
+                            <div style="border-right:1px solid black; padding: 8px; width:200px; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0;">
+                                <p>Celular:
+                                    <strong>
+                                        <span t-esc="o.telemovel"/>
+                                    </strong>
+                                </p>
+                            </div>
+                            <div style="border:0px solid black; padding: 8px; width:200px; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 1;">
+                                <p>Vizinho:
+                                    <strong>
+                                        <span t-esc="o.vizinho"/>
+                                    </strong>
+                                </p>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; padding: 2px;  width:100%; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0; display: -webkit-box; -webkit-box-orient: horizontal; display: -moz-box; -moz-box-orient: horizontal;">
+                            <div style="border:0px solid black;  padding: 1px; width:140px; margin: 5px; height: 20px;">
+                                <p>
+                                    Residência:
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.tipo_residencia == '1'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:100px; margin: 5px; height: 20px;">
+                                <p>
+                                    Própia
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.tipo_residencia == '2'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:100px; margin: 5px; height: 20px;">
+                                <p>
+                                    Alugada
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.tipo_residencia == '3'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:100px; margin: 5px; height: 20px;">
+                                <p>
+                                    Financiada
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.tipo_residencia == '4'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:100px; margin: 5px; height: 20px;">
+                                <p>
+                                    De familiares
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.tipo_residencia == '5'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:80px; margin: 5px; height: 20px;">
+                                <p>Outros:
+                                    <strong>
+                                        <!--<span t-esc="o.especifica_outro_loc_trab"/>-->
+                                    </strong>
+                                </p>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                            <div style="border-right:1px solid black; padding: 8px; margin-top: -1px; margin-left: -1px; width:400px; -webkit-box-flex: 1;">
+                                <p>Referência:
+                                    <strong>
+                                        <span t-esc="o.referencia"/>
+                                    </strong>
+                                </p>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px; width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;">
+                            <div style="border-right:1px solid black; padding: 8px; margin-top: -1px; margin-left: -1px; width:300px; -webkit-box-flex: 1;">
+                                <p>Número de agregados familiares:
+                                    <strong>
+                                        <span t-esc="o.no_agregado_familhar"/>
+                                    </strong>
+                                </p>
+                            </div>
+                            <div style="border:0px solid black; padding: 8px; width:300px; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0;">
+                                <p>Números de filhos:
+                                    <strong>
+                                        <span t-esc="o.n_filhos"/>
+                                    </strong>
+                                </p>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; padding: 2px;  width:100%; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0; display: -webkit-box; -webkit-box-orient: horizontal; display: -moz-box; -moz-box-orient: horizontal">
+                            <div style="border-right:0px solid black;  padding: 1px; width:100px; margin: 5px; height: 20px;">
+                                <p>
+                                    Escolaridade:
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.escolaridade == '1'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:200px; margin: 5px; height: 20px;">
+                                <p>
+                                    Analfabeto
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.escolaridade == '2'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:200px; margin: 5px; height: 20px;">
+                                <p>
+                                    Primária
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.escolaridade == '3'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:200px; margin: 5px; height: 20px;">
+                                <p>
+                                    Secundária
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.escolaridade == '4'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:200px; margin: 5px; height: 20px;">
+                                <p>
+                                    Profissional
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.escolaridade == '5'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:200px; margin: 5px; height: 20px;">
+                                <p>
+                                    Superior
+                                </p>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                            <div style="border:0px solid black;  padding: 8px; width:400px;">
+                                <p>
+                                    <strong>SOLICITAÇÃO DE CRÉDITO</strong>
+                                </p>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;">
+                            <div style="border-right:1px solid black; padding: 8px; margin-top: -1px; margin-left: -1px; width:450px">
+                                <p>Valor Solicitado(ECV):
+                                    <strong>
+                                        <span t-esc="o.valor_solicitado"/>
+                                    </strong>
+                                </p>
+                            </div>
+                            <div style="border:0px solid black; width:450px;  padding: 8px; margin-top: -1px; margin-left: -1px;">
+                                <p>Prestação que pode pagar (ECV):
+                                    <strong>
+                                        <span t-esc="o.prestacao_pagar"/>
+                                    </strong>
+                                </p>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: left;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+                            <div style="border-right:1px solid black; padding: 8px; margin-top: -1px; margin-left: -1px; width:200px; -webkit-box-flex: 0;">
+                                <p>Prazo:
+                                    <strong>
+                                        <span t-esc="o.prazo"/>
+                                    </strong>
+                                </p>
+                            </div>
+                            <div style="border:0px solid black; padding: 2px; width:700px; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0; display: -webkit-box; -webkit-box-orient: horizontal; -webkit-box-pack: flex; display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: flex;">
+                                <div style="border:0px solid black;  padding: 1px; width:170px; margin: 5px; height: 20px;">
+                                    <p>
+                                        Periodicidadde:
+                                    </p>
+                                </div>
+                                <div class="col-xs-5 text-center"
+                                     style="border:1px solid black; padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                    <t t-if="o.periodicidade == '1'">
+                                        <p>X</p>
+                                    </t>
+                                </div>
+                                <div style="border:0px solid black;  padding: 1px; width:300px; margin: 5px; height: 20px;">
+                                    <p>
+                                        Semanal
+                                    </p>
+                                </div>
+                                <div class="col-xs-5 text-center"
+                                     style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                    <t t-if="o.periodicidade == '2'">
+                                        <p>X</p>
+                                    </t>
+                                </div>
+                                <div style="border:0px  solid black;  padding: 1px; width:300px; margin: 5px; height: 20px;">
+                                    <p>
+                                        Quinzenal
+                                    </p>
+                                </div>
+                                <div class="col-xs-5 text-center"
+                                     style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                    <t t-if="o.periodicidade == '3'">
+                                        <p>X</p>
+                                    </t>
+                                </div>
+                                <div style="border:0px solid black;  padding: 1px; width:300px; margin: 5px; height: 20px;">
+                                    <p>
+                                        Mensal
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; padding: 2px;  width:100%; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0; display: -webkit-box; -webkit-box-orient: horizontal; -webkit-box-pack: left; display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+                            <div style="border-right:0px solid black;  padding: 1px; width:80px; margin: 5px; height: 20px;">
+                                <p>
+                                    Finalidade:
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.finalidade == '1'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:150px; margin: 5px; height: 20px;">
+                                <p>
+                                    Iniciar negócio
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.finalidade == '2'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:80px; margin: 5px; height: 20px;">
+                                <p>
+                                    Reforçar
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.finalidade == '3'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:80px; margin: 5px; height: 20px;">
+                                <p>
+                                    Aplicar
+                                </p>
+                            </div>
+                            <div style="border-left:1px solid black; padding: 1px; width:250px; height: 40px;">
+                                <p>
+                                    Atividades:
+                                    <strong>
+                                        <span t-esc="o.actividade"/>
+                                    </strong>
+                                </p>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; padding: 2px;  width:100%; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0; display: -webkit-box; -webkit-box-orient: horizontal; display: -moz-box; -moz-box-orient: horizontal">
+                            <div style="border-right:0px solid black;  padding: 1px; width:170px; margin: 5px; height: 20px;">
+                                <p>
+                                    Aplicação do crédito:
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.aplicacao == '1'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:150px; margin: 5px; height: 20px;">
+                                <p>
+                                    Fundo de maneio
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.aplicacao == '2'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:150px; margin: 5px; height: 20px;">
+                                <p>
+                                    Investimento fixo
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.aplicacao == '3'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:100px; margin: 5px; height: 20px;">
+                                <p>
+                                    Misto
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.aplicacao == '4'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:80px; margin: 5px; height: 20px;">
+                                <p>Outro:
+                                    <strong>
+                                        <span t-esc="o.outro_aplica"/>
+                                    </strong>
+                                </p>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                            <div style="border:0px solid black;  padding: 8px; width:400px;">
+                                <p>
+                                    <strong>DADOS DO NEGÓCIO</strong>
+                                </p>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                            <div style="border-right:1px solid black; padding: 8px; margin-top: -1px; margin-left: -1px; width:200px; -webkit-box-flex: 1;">
+                                <p>Nome:
+                                    <strong>
+                                        <span t-esc="o.nome"/>
+                                    </strong>
+                                </p>
+                            </div>
+                            <div style="border:0px solid black; padding: 8px; width:70px; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0;">
+                                <p>Inicio:</p>
+
+                            </div>
+                            <div style="border:0px solid black; padding: 8px; width:150px; margin-top: -20px; margin-left: -1px; -webkit-box-flex: 1;">
+                                <p>
+                                    <strong>
+                                        <t t-if="o.inicio == '1'">
+                                            <p>6 Mess a 1 ano</p>
+                                        </t>
+                                        <t t-if="o.inicio == '2'">
+                                            <p>1 ano a 3 ano</p>
+                                        </t>
+                                        <t t-if="o.inicio == '3'">
+                                            <p>3 ano</p>
+                                        </t>
+                                    </strong>
+                                </p>
+
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                            <div style="border-right:1px solid black; padding: 8px; margin-top: -1px; margin-left: -1px; width:200px; -webkit-box-flex: 1;">
+                                <p>Endereço do local de trabalho:
+                                    <strong>
+                                        <span t-esc="o.endereco"/>
+                                    </strong>
+                                </p>
+                            </div>
+                            <div style="border:0px solid black; padding: 8px; width:200px; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0;">
+                                <p>Telefone:
+                                    <strong>
+                                        <span t-esc="o.telefone"/>
+                                    </strong>
+                                </p>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; padding: 2px;  width:100%; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0; display: -webkit-box; -webkit-box-orient: horizontal; -webkit-box-pack: left; display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+                            <div style="border-right:0px solid black;  padding: 1px; width:150px; margin: 5px; height: 20px;">
+                                <p>
+                                    Local de trabalho:
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.local_trabalho == '1'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:150px; margin: 5px; height: 20px;">
+                                <p>
+                                    Propio
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.local_trabalho == '2'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:100px; margin: 5px; height: 20px;">
+                                <p>
+                                    Alugado
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.local_trabalho == '3'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:100px; margin: 5px; height: 20px;">
+                                <p>
+                                    Financiado
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.local_trabalho == '4'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:100px; margin: 5px; height: 20px;">
+                                <p>
+                                    Cedido
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.local_trabalho == '5'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:100px; margin: 5px; height: 20px;">
+                                <p>Outros:
+                                    <strong>
+                                        <span t-esc="o.especifica_outro_loc_trab"/>
+                                    </strong>
+                                </p>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                            <div style="border:0px solid black;  padding: 8px; width:200px;">
+                                <p>
+                                    SETOR
+                                </p>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black;  height: 117px; margin-top: -1px; width:100%; margin-left: -1px; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal;
+                                                                          display: -moz-box; -moz-box-orient: horizontal; ">
+                            <div class="text-center"
+                                 style="border:0px  solid black; border-top:2px; width:25%; height:100px; padding: 5px; margin-top: -1px;">
+                                <div class="col-xs-5 text-center"
+                                     style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                    <t t-if="o.setor == '1'">
+                                        <p>X</p>
+                                    </t>
+                                </div>
+                                <div class="text-left"
+                                     style="border:0px  solid black;  margin-left: 50px; width:50%; height:30%; margin-top: -30px;">
+                                    <p>
+                                        Comércio
+                                    </p>
+                                </div>
+                                <div class="col-xs-5 text-center"
+                                     style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                    <t t-if="o.setor == '2'">
+                                        <p>X</p>
+                                    </t>
+                                </div>
+                                <div class="text-left"
+                                     style="border:0px  solid black;  margin-left: 50px; width:50%; height:30%; margin-top: -30px;">
+                                    <p>
+                                        Serviço
+                                    </p>
+                                </div>
+                                <div class="col-xs-5 text-center"
+                                     style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                    <t t-if="o.setor == '3'">
+                                        <p>X</p>
+                                    </t>
+                                </div>
+                                <div class="text-left"
+                                     style="border:0px  solid black;  margin-left: 50px; width:50%; height:30%; margin-top: -30px;">
+                                    <p>
+                                        Produção
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="text-center"
+                                 style="border:0px  solid black; border-top:0px; width:25%; height:100px; padding: 5px; margin-top: -1px;">
+                                <div class="col-xs-5 text-center"
+                                     style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                    <t t-if="o.setor == '4'">
+                                        <p>X</p>
+                                    </t>
+                                </div>
+                                <div class="text-left"
+                                     style="border:0px  solid black;  margin-left: 50px; width:50%; height:30%; margin-top: -30px;">
+                                    <p>
+                                        Agricultura
+                                    </p>
+                                </div>
+                                <div class="col-xs-5 text-center"
+                                     style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                    <t t-if="o.setor == '5'">
+                                        <p>X</p>
+                                    </t>
+                                </div>
+                                <div class="text-left"
+                                     style="border:0px  solid black;  margin-left: 50px; width:50%; height:30%; margin-top: -30px;">
+                                    <p>
+                                        Pesca
+                                    </p>
+                                </div>
+                                <div class="col-xs-5 text-center"
+                                     style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                    <t t-if="o.setor == '6'">
+                                        <p>X</p>
+                                    </t>
+                                </div>
+                                <div class="text-left"
+                                     style="border:0px  solid black;  margin-left: 50px; width:50%; height:30%; margin-top: -30px;">
+                                    <p>
+                                        Piquena Industria
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="text-center"
+                                 style="border:0px  solid black; border-top:0px; width:20%; height:100px; padding: 5px; margin-top: -1px;">
+                                <div class="col-xs-5 text-center"
+                                     style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                    <t t-if="o.setor == '7'">
+                                        <p>X</p>
+                                    </t>
+                                </div>
+                                <div class="text-left"
+                                     style="border:0px  solid black;  margin-left: 50px; width:50%; height:30%; margin-top: -30px;">
+                                    <p>
+                                        Pecuária
+                                    </p>
+                                </div>
+                                <div class="col-xs-5 text-center"
+                                     style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                    <t t-if="o.setor == '8'">
+                                        <p>X</p>
+                                    </t>
+                                </div>
+                                <div class="text-left"
+                                     style="border:0px  solid black;  margin-left: 50px; width:50%; height:30%; margin-top: -30px;">
+                                    <p>
+                                        Agropecuária
+                                    </p>
+                                </div>
+                                <div class="col-xs-5 text-center"
+                                     style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                    <t t-if="o.setor == '9'">
+                                        <p>X</p>
+                                    </t>
+                                </div>
+                                <div class="text-left"
+                                     style="border:0px  solid black;  margin-left: 50px; width:50%; height:30%; margin-top: -30px;">
+                                    <p>
+                                        Consumo
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="text-center"
+                                 style="border:0px  solid black; border-top:0px; width:30%; height:100px; padding: 5px; margin-top: -1px;">
+                                <div class="col-xs-5 text-center"
+                                     style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                    <t t-if="o.setor == '10'">
+                                        <p>X</p>
+                                    </t>
+                                </div>
+                                <div class="text-left"
+                                     style="border:0px  solid black;  margin-left: 50px; width:50%; height:30%; margin-top: -30px;">
+                                    <p>
+                                        Melhoria habitacional
+                                    </p>
+                                </div>
+                                <div class="col-xs-5 text-center"
+                                     style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                    <t t-if="o.setor == '11'">
+                                        <p>X</p>
+                                    </t>
+                                </div>
+                                <div class="text-left"
+                                     style="border:0px  solid black;  margin-left: 50px; width:60%; height:30%; margin-top: -30px;">
+                                    <p>Outros:
+                                        <strong>
+                                            <span t-esc="o.especifica_outro_setor"/>
+                                        </strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: justify;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: justify;">
+                            <div style="border:0px solid black; padding: 2px; width:700px; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0; display: -webkit-box; -webkit-box-orient: horizontal; display: -moz-box; -moz-box-orient: horizontal;">
+                                <div style="border:0px solid black;  padding: 1px; width:80px; margin: 5px; height: 20px;">
+                                    <p>
+                                        Area:
+                                    </p>
+                                </div>
+                                <div class="col-xs-5 text-center"
+                                     style="border:1px solid black; padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                    <t t-if="o.area == '1'">
+                                        <p>X</p>
+                                    </t>
+                                </div>
+                                <div style="border:0px solid black;  padding: 1px; width:300px; margin: 5px; height: 20px;">
+                                    <p>
+                                        Urbano
+                                    </p>
+                                </div>
+                                <div class="col-xs-5 text-center"
+                                     style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                    <t t-if="o.area == '2'">
+                                        <p>X</p>
+                                    </t>
+                                </div>
+                                <div style="border:0px  solid black;  padding: 1px; width:300px; margin: 5px; height: 20px;">
+                                    <p>
+                                        Sub Urbano
+                                    </p>
+                                </div>
+                                <div class="col-xs-5 text-center"
+                                     style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                    <t t-if="o.area == '3'">
+                                        <p>X</p>
+                                    </t>
+                                </div>
+                                <div style="border:0px solid black;  padding: 1px; width:80px; margin: 5px; height: 20px;">
+                                    <p>
+                                        Rural
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; padding: 2px;  width:100%; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0; display: -webkit-box; -webkit-box-orient: horizontal; display: -moz-box; -moz-box-orient: horizontal;">
+                            <div style="border-right:0px solid black;  padding: 1px; width:200px; margin: 5px; height: 20px;">
+                                <p>
+                                    Estrotura fisica de negócio:
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.estrotura_fisica == '1'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:200px; margin: 5px; height: 20px;">
+                                <p>
+                                    Movel
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.estrotura_fisica == '2'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:200px; margin: 5px; height: 20px;">
+                                <p>
+                                    Na feira
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.estrotura_fisica == '3'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:200px; margin: 5px; height: 20px;">
+                                <p>
+                                    Ponto comerical
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.estrotura_fisica == '4'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:200px; margin: 5px; height: 20px;">
+                                <p>
+                                    Casa
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.estrotura_fisica == '5'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:80px; margin: 5px; height: 20px;">
+                                <p>
+                                    Ponto Fixo
+                                </p>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; padding: 2px;  width:100%; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0; display: -webkit-box; -webkit-box-orient: horizontal; -webkit-box-pack: flex; display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: flex;">
+                            <div style="border-right:0px solid black;  padding: 1px; width:200px; margin: 5px; height: 20px;">
+                                <p>
+                                    Condição do imovel:
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.cond_imovel == '1'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:300px; margin: 5px; height: 20px;">
+                                <p>
+                                    Própio
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.cond_imovel == '2'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:300px; margin: 5px; height: 20px;">
+                                <p>
+                                    Alugado
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.cond_imovel == '3'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:150px; margin: 5px; height: 20px;">
+                                <p>
+                                    Outro
+                                </p>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; padding: 2px;  width:100%; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0; display: -webkit-box; -webkit-box-orient: horizontal; -webkit-box-pack: left; display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+                            <div style="border-right:0px solid black;  padding: 1px; width:150px; margin: 5px; height: 20px;">
+                                <p>
+                                    Tipo de Controles:
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.tipo_controle == '1'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:200px; margin: 5px; height: 20px;">
+                                <p>
+                                    Estoque
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.tipo_controle == '2'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:250px; margin: 5px; height: 20px;">
+                                <p>
+                                    Livro de Caixa
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.tipo_controle == '3'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:280px; margin: 5px; height: 20px;">
+                                <p>
+                                    "Fazer de Cabeça"
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.tipo_controle == '4'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:100px; margin: 5px; height: 20px;">
+                                <p>
+                                    Nenhum
+                                </p>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: justify;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: justify;">
+                            <div style="border-right:1px solid black; padding: 8px; margin-top: -1px; margin-left: -1px; width:200px; -webkit-box-flex: 1;">
+                                <p>Número de pessoa que trabalha no negócio:
+                                    <strong>
+                                        <span t-esc="o.num_pessoa_negoc"/>
+                                    </strong>
+                                </p>
+                            </div>
+                            <div style="border-right:1px solid black; padding: 8px; width:200px; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 1;">
+                                <p>Familiar:
+                                    <strong>
+                                        <span t-esc="o.familiar"/>
+                                    </strong>
+                                </p>
+                            </div>
+                            <div style="border:0px solid black; padding: 8px; width:200px; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0;">
+                                <p>Não familiar:
+                                    <strong>
+                                        <span t-esc="o.nao_familiar"/>
+                                    </strong>
+                                </p>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: justify;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: justify;">
+                            <div style="border-right:1px solid black; padding: 8px; margin-top: -1px; margin-left: -1px; width:50%; -webkit-box-flex: 0;">
+                                <p>Número de pessoas que dependem do negócio:
+                                    <strong>
+                                        <span t-esc="o.num_pess_dep_negoc"/>
+                                    </strong>
+                                </p>
+                            </div>
+                            <div style="border:0px solid black; padding: 8px; width:50%; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0;">
+                                <p>Renda familiar(ECV):
+                                    <strong>
+                                        <span t-esc="o.renda_familiar"/>
+                                    </strong>
+                                </p>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; padding: 2px;  width:100%; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0; display: -webkit-box; -webkit-box-orient: horizontal; -webkit-box-pack: justify; display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: justify;">
+                            <div style="border-right:0px solid black;  padding: 1px; width:260px; margin: 5px; height: 20px;">
+                                <p>
+                                    Participou de alguma Capacitação:
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px;">
+                                <t t-if="o.participou_capacitacao == 'True'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:200px; margin: 5px; height: 20px;">
+                                <p>
+                                    Sim
+                                </p>
+                            </div>
+                            <div class="col-xs-5 text-center"
+                                 style="border:1px solid black;  padding: -2px; width:30px; margin: 5px; height: 30px; -webkit-box-flex: 0;">
+                                <t t-if="o.participou_capacitacao == 'False'">
+                                    <p>X</p>
+                                </t>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:40px; margin: 5px; height: 20px; -webkit-box-flex: 0;">
+                                <p>
+                                    Não
+                                </p>
+                            </div>
+                            <div style="border:0px solid black;  padding: 1px; width:300px; margin: 5px; height: 20px; -webkit-box-flex: 1;">
+                                <p>Quaḷ:
+                                    <strong>
+                                        <span t-esc="o.qual"/>
+                                    </strong>
+                                </p>
+                            </div>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px;  padding: 10px;  margin: 5px; height: 150px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: justify;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: justify;">
+                            <p>
+                                Declaro que os presentes dados e informações são verdadeiros e comprometo-me a
+                                mantê-los
+                                atualizados, estando ciente de que os mesmos, sob asa penas de lei, serão
+                                utilizados,
+                                inclusive,
+                                para efeito de notificações e demais processos legais. Eautorizo ainda, A IMF a
+                                coletar
+                                minhas
+                                informações cadastrais em outros bancos e IMFs
+                            </p>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

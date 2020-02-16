@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="pessoas_form" model="ir.ui.view">
+            <field name="name">Pessoas</field>
+            <field name="model">pessoas</field>
+            <field name="arch" type="xml">
+                <form string="Pessoas">
+                    <sheet>
+                        <div>
+                            <label for="title" string="Id"/>
+                            <label for="title" string="" style="width:20px"/>
+                            <label for="title" string="Nome"/>
+
+                        </div>
+                        <div>
+                            <field name="codigo"/>
+                            <label for="title" string="" style="width:10px"/>
+                            <field name="name" style="width:320px"/>
+
+                        </div>
+                        <div>
+                            <label for="title" string="" style="width:20px"/>
+                        </div>
+                        <div>
+                            <notebook>
+                                <page string="Dados Gerais">
+                                    <div>
+                                        <label for="title" string="Alcunha" style="width:90px"/>
+                                        <field name="alcunha" style="width:260px"/>
+                                        <label for="title" string="" style="width:120px"/>
+                                        <label for="title" string="NIF" style="width:50px"/>
+                                        <field name="nif_pessoa" style="width:260px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Documento________________________________________"
+                                               style="color:Blue; font-weight: bold;"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Tipo" style="width:90px"/>
+                                        <field name="tipo_documento" style="width:260px"/>
+                                        <label for="title" string="" style="width:120px"/>
+                                        <label for="title" string="Membro" style="width:90px"/>
+                                        <field name="membro" style="width:260px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Numero" style="width:90px"/>
+                                        <field name="numero_documento" style="width:260px"/>
+                                        <label for="title" string="" style="width:120px"/>
+                                        <label for="title" string="Sexo" style="width:90px"/>
+                                        <field name="sexo" style="width:260px" widget="radio"
+                                               options="{'horizontal':true}"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string=" " style="width:10px"></label>
+                                    </div>
+                                    <div>
+                                        <label for="title"
+                                               string="Nacionalidade_______________________________________________________________________________________________________"
+                                               style="color:Blue; font-weight: bold;"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Local" style="width:90px"/>
+                                        <field name="local_nascimento" style="width:740px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Data" style="width:90px"/>
+                                        <field name="data_nascimento" style="width:260px"/>
+                                        <label for="title" string="" style="width:120px"/>
+                                        <label for="title" string="Nacionalidade" style="width:90px"/>
+                                        <field name="nacionalidade" style="width:260px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string=" " style="width:10px"></label>
+                                    </div>
+                                    <div>
+                                        <label for="title"
+                                               string="Estado Civil_________________________________________________________________________________________________________"
+                                               style="color:Blue; font-weight: bold;"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Estado" style="width:90px"/>
+                                        <field name="estado_civil" style="width:260px"/>
+                                        <label for="title" string="" style="width:120px"/>
+                                        <label for="title" string="Documento" style="width:90px"/>
+                                        <field name="documento" style="width:260px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Nome Conjugue" style="width:100px"/>
+                                        <field name="nome_conjugue" style="width:730px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Filiação" style="width:100px"/>
+                                        <field name="mae" style="width:360px" placeholder="Mãe"/>
+                                        <label for="title" string="" style="width:5px"/>
+                                        <field name="pai" style="width:360px" placeholder="Pai"/>
+                                    </div>
+                                </page>
+                                <page string="Outros Dados">
+                                    <div>
+                                        <label for="title" string="" style="width:20px"/>
+                                    </div>
+                                    <div>
+                                        <div>
+                                            <label for="title"
+                                                   string="Residência_________________________________________________________________________________________________________________________________________"
+                                                   style="color:Blue; font-weight: bold;"/>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="" style="width:20px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Endereço" style="width:90px"/>
+                                        <field name="endereco" style="width:740px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Bairro" style="width:90px"/>
+                                        <field name="bairo_id" style="width:260px"/>
+                                        <label for="title" string="" style="width:90px"/>
+                                        <label for="title" string="Tempo" style="width:90px"/>
+                                        <field name="tempo" style="width:260px"/>
+                                        <label for="title" string="ano(s)"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Zona" style="color:Blue; width:90px"/>
+                                        <field name="zona_id" style="color:Blue; width:260px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Freguesia" style="color:Blue; width:90px"/>
+                                        <field name="freguesia_id" style="color:Blue; width:260px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Concelho" style="color:Blue; width:90px"/>
+                                        <field name="concelho_id" style="color:Blue; width:260px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Ilha" style="color:Blue; width:90px"/>
+                                        <field name="ilha_id" style="color:Blue; width:260px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Móvel" style="width:90px"/>
+                                        <field name="telefone_pessoa" style="width:260px"/>
+                                        <label for="title" string="" style="width:90px"/>
+                                        <label for="title" string="Telefone Fixo" style="width:120px"/>
+                                        <field name="fixo_pessoa" style="width:260px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Vizinho" style="width:90px"/>
+                                        <field name="vizinho" style="width:260px"/>
+                                        <label for="title" string="" style="width:90px"/>
+                                        <label for="title" string="Tipo Residência" style="width:120px"/>
+                                        <field name="tipo_residencia" style="width:260px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="" style="width:20px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Referência" style="width:90px"/>
+                                    </div>
+                                    <div>
+                                        <field name="referencia" style="width:840px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="" style="width:20px"/>
+                                    </div>
+                                    <div>
+                                        <div>
+                                            <label for="title"
+                                                   string="Estado____________________________________________________________________________________________________________________________________________"
+                                                   style="color:Blue; font-weight: bold;"/>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Nor.Agregados Familiares" style="width:90px"/>
+                                        <field name="no_agregado_familhar" style="width:260px"/>
+                                        <label for="title" string="" style="width:120px"/>
+                                        <label for="title" string="Nro.Filhos" style="width:90px"/>
+                                        <field name="n_filhos" style="width:260px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Escolaridade" style="width:90px"/>
+                                        <field name="escolaridade" style="width:260px"/>
+                                    </div>
+                                </page>
+                                <page string="OBS">
+                                    <div>
+                                        <label for="title" string="" style="width:20px"/>
+                                    </div>
+                                    <div>
+                                        <field name="obs" style="width:840px"/>
+                                    </div>
+                                </page>
+                            </notebook>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="form_pessoa_search_view" model="ir.ui.view">
+            <field name="name">Pessoas</field>
+            <field name="model">pessoas</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="id"/>
+                </search>
+            </field>
+        </record>
+        <record id="pessoas_tree" model="ir.ui.view">
+            <field name="name">Pessoas</field>
+            <field name="model">pessoas</field>
+            <field name="arch" type="xml">
+                <tree string="Pessoal">
+                    <field name="codigo"/>
+                    <field name="name"/>
+                    <field name="alcunha"/>
+                    <field name="nif_pessoa"/>
+                    <field name="tipo_documento"/>
+                    <field name="numero_documento"/>
+                    <field name="sexo"/>
+                    <field name="membro"/>
+                    <field name="local_nascimento"/>
+                    <field name="data_nascimento"/>
+                    <field name="nacionalidade"/>
+                    <field name="nome_conjugue"/>
+                    <field name="estado_civil"/>
+                    <field name="documento"/>
+                    <field name="id"/>
+                    <field name="utilizador_id"/>
+
+                </tree>
+            </field>
+        </record>
+        <record id="pessoa_codigo_seq" model="ir.sequence">
+            <field name="name">Pessoas</field>
+            <field name="code">pessoa.codigo</field>
+            <field name="prefix"></field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="act_window_pess" model="ir.actions.act_window">
+            <field name="name">Pessoas</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pessoas</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Criar um novo Pessoas.
+                </p>
+                <p>
+                    Organize suas atividades (planeje tarefas, acompanhe problemas, planilhas de Pessoal) para projetos
+                    internos, pessoais ou de clientes.
+                </p>
+            </field>
+        </record>
+
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="pessoas_menus" name="Pessoas" parent="gestao_pessoas_cliente_menu" action="act_window_pess"
+                  sequence="80"/>
+    </data>
+</odoo>

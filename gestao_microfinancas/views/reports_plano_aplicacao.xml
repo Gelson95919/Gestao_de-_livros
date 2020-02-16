@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="report.paperformat" id="paperformat_attendance_recap_report">
+            <field name="name">paperformat.attendance.recap.report</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_width">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">40</field>
+            <field name="margin_right">5</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">30</field>
+            <field name="dpi">90</field>
+        </record>
+        <report
+                id="plano_aplicacao"
+                model="solicitacao.credito"
+                string="Plano de Aplicação"
+                name="gestao_microfinancas.plano_aplicacao_view"
+                file="gestao_microfinancas.plano_aplicacao"
+                paperformat="paperformat_attendance_recap_report"
+                report_type="qweb-pdf"
+                menu="True"/>
+
+        <template id="plano_aplicacao_view">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div style="border:1px solid black; text-center; margin-left: -1px; height: 43px; margin-top:3px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                            <strong>
+                                <h2 class="text-center">PLANO DE APLICAÇÃO DO EMPRÉSTIMPO</h2>
+                            </strong>
+                        </div>
+                        <div style="width: 860px; width: 100%; margin-top:10px; ">
+                            <table class="table table-condensed table-bordered" style="width: 100%">
+                                <thead>
+                                    <th class="text-center" style="width: 70%">ITENS A SER ADQUIRIDOS</th>
+                                    <th class="text-center" style="width: 20%">UNID.</th>
+                                    <th class="text-center" style="width: 15%">PREÇO UNIT</th>
+                                    <th class="text-center" style="width: 15%">QUANT</th>
+                                    <th class="text-center" style="width: 15%">TOTAL(ECV)</th>
+                                    <th class="text-center" style="width: 15%">VERIFIC</th>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="o.plano_aplicacao_ids" t-as="pl">
+                                        <tr>
+                                            <td>
+                                                <span t-esc="pl.item"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-esc="pl.name_unid"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-esc="pl.preco_unit"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="pl.quantidade"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-esc="pl.total"/>
+                                            </td>
+                                            <td class="text-center">
+                                                 <span t-esc="pl.verif"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+
+                                </tbody>
+                            </table>
+                            <div class="col col-3 offset-8 text-right">
+                                <td class="text-center">
+                                    <th>TOTAL:</th>
+                                    <span t-esc="o.valor_total"/>
+                                </td>
+                            </div>
+                            <div id="div_assinatur" class="row text-right" style="border-top: 0px solid black;">
+                                <div class="page">
+                                    <div class="row text-right" id='dlinha' style="position:relative; left:5px; top:1px;">
+                                        <div style="border:1px solid black; margin-top: 100px; border-top: 0px; width:250px; margin-left: 50px;">
+                                        </div>
+                                    </div>
+                                    <div class="row text-right" id="data"
+                                         style="position:absolute;  left:170px; margin-top: -1px;;">
+                                        <strong>Data</strong>
+                                    </div>
+                                    <div id="assi_linha" style="position:relative; left:320px; top:20px;">
+                                        <div style="border:1px solid black; margin-top: -20px; border-top: 0px; width:350px; margin-left: 150px;">
+                                        </div>
+                                    </div>
+                                    <div id="assi" style="position:relative; left:260px; top:15px;">
+                                        <strong>Assinatura de Propornente</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

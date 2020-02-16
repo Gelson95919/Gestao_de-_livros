@@ -1,0 +1,16 @@
+<odoo>
+  <data>
+
+    <menuitem name="Gestão Microcrédito" web_icon="gestao_microfinancas,static/description/icon.png" id="gestao_microfinancas.menu_root"/>
+
+    <menuitem name="Gestão de Operações" id="gestao_operacoesmenu_menu" parent="gestao_microfinancas.menu_root"/>
+
+    <menuitem name="Gestão de Pessoas/Cliente" id="gestao_pessoas_cliente_menu" parent="gestao_microfinancas.menu_root"/>
+    <menuitem name="Gestão de Grupos" id="gestao_grupo_menu" parent="gestao_microfinancas.menu_root"/>
+
+    <menuitem name="Gestão Crédito" id="gestao_credito_menu" parent="gestao_microfinancas.menu_root"/>
+
+    <menuitem name="Parâmetros" id="gestao_credito_menu_param" parent="gestao_microfinancas.menu_root"/>
+
+  </data>
+</odoo>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="report.paperformat" id="paperformat_plano_reembolso_report">
+            <field name="name">paperformat.attendance.recap.report</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_width">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">40</field>
+            <field name="margin_right">5</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">5</field>
+            <field name="header_line" eval="True"/>
+            <field name="header_spacing">30</field>
+            <field name="dpi">90</field>
+        </record>
+        <report
+                id="plano_reembolso"
+                model="acta.comite"
+                string="Plano de Reembolso"
+                name="gestao_microfinancas.plano_reembolso_view"
+                file="gestao_microfinancas.acta_comit_form"
+                paperformat="paperformat_plano_reembolso_report"
+                report_type="qweb-pdf"
+                menu="True"/>
+
+        <template id="plano_reembolso_view">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div style="border:1px solid black; text-center; margin-left: -1px; height: 43px; margin-top:3px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                            <strong>
+                                <h3>PLANO DE REEMBOLSO DE DIVIDA</h3>
+                            </strong>
+                        </div>
+                        <div style="border:1px solid black; text-left; margin-left: -1px; height: 43px; margin-top:3px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: left;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+                            <strong>
+                                <h4>NOME: <span t-esc="o.name"/></h4>
+                            </strong>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; height: 43px; margin-top:20px; width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: left;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+                            <div class="col-xs-5 text-right" id="desc_it_1"
+                                 style="border:0px solid black; margin-top: -1px; height: 44px; width: 200px;  padding: 8px;">
+                                <p>Valor Emprestimo:</p>
+                            </div>
+                            <div class="col-xs-5 text-right"
+                                 style="border:1px solid black;  margin-top: -1px; height: 44px; width: 250px;  padding: 8px;">
+                                <strong>
+                                    <span t-esc="o.valor_total"/>
+                                </strong>
+                            </div>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; height: 43px; margin-top:5px; width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: left;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+                            <div class="col-xs-5 text-right" id="desc_it_1"
+                                 style="border:0px solid black; margin-top: -1px; height: 44px; width: 200px;  padding: 8px;">
+                                <p>Juros:</p>
+                            </div>
+                            <div class="col-xs-5 text-right"
+                                 style="border:1px solid black;  margin-top: -1px; height: 44px; width: 250px;  padding: 8px;">
+                                <strong>
+                                    <span t-esc="o.juros"/>
+                                </strong>
+                            </div>
+                            <div class="col-xs-5 text-center" id="desc_it_1"
+                                 style="border:0px solid black; margin-top: -1px; height: 44px; width: 100px;  padding: 8px;">
+                                <strong>
+                                    <p>% ou mês</p>
+                                </strong>
+                            </div>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; height: 43px; margin-top:5px; width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: left;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+                            <div class="col-xs-5 text-right" id="desc_it_1"
+                                 style="border:0px solid black; margin-top: -1px; height: 44px; width: 200px;  padding: 8px;">
+                                <p>Nº Prestações:</p>
+                            </div>
+                            <div class="col-xs-5 text-right"
+                                 style="border:1px solid black;  margin-top: -1px; height: 44px; width: 250px;  padding: 8px;">
+                                <strong>
+                                    <span t-esc="o.numero_prestacoes"/>
+                                </strong>
+                            </div>
+                            <div class="col-xs-5 text-center" id="desc_it_1"
+                                 style="border:0px solid black; margin-top: -1px; height: 44px; width: 100px;  padding: 8px;">
+
+                                <strong>
+                                    <p>Mensal</p>
+                                </strong>
+                            </div>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; height: 43px; margin-top:5px; width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: left;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+                            <div class="col-xs-5 text-right" id="desc_it_1"
+                                 style="border:0px solid black; margin-top: -1px; height: 44px; width: 200px;  padding: 8px;">
+                                <p>Metodo calculo juro:</p>
+                            </div>
+                            <div class="col-xs-5 text-right"
+                                 style="border:1px solid black;  margin-top: -1px; height: 44px; width: 250px;  padding: 8px;">
+                                <strong>
+                                    <span t-esc="o.metudo_calculo"/>
+                                </strong>
+                            </div>
+                            <div class="col-xs-5 text-right" id="desc_it_1"
+                                 style="border:0px solid black; margin-top: -1px; height: 44px; width: 200px;  padding: 8px;">
+                                <p>Comição:</p>
+                            </div>
+                            <div class="col-xs-5 text-right"
+                                 style="border:1px solid black;  margin-top: -1px; height: 44px; width: 200px;  padding: 8px;">
+                                <strong>
+                                    <span t-esc="o.valor"/>
+                                </strong>
+                            </div>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; height: 43px; margin-top:5px; width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: left;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+                            <div class="col-xs-5 text-right" id="desc_it_1"
+                                 style="border:0px solid black; margin-top: -1px; height: 44px; width: 200px;  padding: 8px;">
+                                <p>Período de carência:</p>
+                            </div>
+                            <div class="col-xs-5 text-right"
+                                 style="border:1px solid black;  margin-top: -1px; height: 44px; width: 250px;  padding: 8px;">
+                                 <strong>
+                                    <span t-esc="o.periodo_carencia"/>
+                                 </strong>
+                            </div>
+                            <div class="col-xs-5 text-right" id="desc_it_1"
+                                 style="border:0px solid black; margin-top: -1px; height: 44px; width: 200px;  padding: 8px;">
+                                <p>Poupança:</p>
+                            </div>
+                            <div class="col-xs-5 text-right"
+                                 style="border:1px solid black;  margin-top: -1px; height: 44px; width: 200px;  padding: 8px;">
+                                <strong>
+                                    <span t-esc="o.montante"/>
+                                 </strong>
+                            </div>
+                        </div>
+                        <div style="border:1px solid black; ; border-right:0px; ; border-left:0px; width:100%; margin-left: -1px; height: 25px; margin-top:20px; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal;
+                                                                          display: -moz-box; -moz-box-orient: horizontal; ">
+                            <div class="text-left"
+                                 style="border-right:0px  solid black; padding: 2px; color:red; margin-top: -1px; margin-left: 1px;  width:100px;">
+                                <p>Nº</p>
+                            </div>
+                            <div class="text-left"
+                                 style="border:0px solid black; padding: 2px; color:red; margin-top: -1px; margin-left: -1px; width:100px;">
+                                <p>Data</p>
+                            </div>
+                            <div class="text-center"
+                                 style="border:0px solid black; padding: 2px; color:red; margin-top: -1px; margin-left: 50px; width:100px;">
+                                <p>Prestação</p>
+                            </div>
+                            <div class="text-center"
+                                 style="border:0px solid black; padding: 2px; color:red; margin-top: -1px; margin-left: 50px; width:100px;">
+                                <p>Juro</p>
+                            </div>
+                            <div class="text-center"
+                                 style="border:0px solid black; padding: 2px; color:red; margin-top: -1px; margin-left: 60px; width:100px;">
+                                <p>Amortização</p>
+                            </div>
+                            <div class="text-center"
+                                 style="border:0px solid black; padding: 2px; color:red; margin-top: -1px; margin-left: 60px; width:100px;">
+                                <p>Divida</p>
+                            </div>
+                        </div>
+                        <div style="border:0px">
+                            <table style="width: 100%">
+                                <tbody>
+                                    <t t-foreach="o.reg_docum_ids_desenb" t-as="pf"><!--reg_doc_ids devia ficar esse campo pelo facto de não ter o ata_id no reg_docum coloquei o campo reg_docum_ids_desenb mas o correto e para substituir-->
+                                        <tr>
+                                            <td>
+                                                <span t-esc="pf.numer_prest"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-esc="pf.data_documento"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-esc="pf.prestacao"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-esc="pf.juro_jerado"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-esc="pf.amortizacao"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-esc="pf.divida"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

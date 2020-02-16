@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="cred_aprov_form" model="ir.ui.view">
+            <field name="name">Credito Aprovado</field>
+            <field name="model">credito.aprovado</field>
+            <field name="arch" type="xml">
+                <form string="Credito Aprovado" create="false" edit="false">
+                    <header>
+                        <!--<button name="mod_codop" string=" ADD ID REL" type="object" class="btn-primary"/>
+                        <button name="mod_cred" string=" ADD ID REL" type="object" class="btn-primary"/>-->
+                        <field name="estado" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <div>
+                            <label for="title" string="Valor"/>
+                            <field name="valor" style="width:200px" readonly="1"/>
+                            <label for="title" string="" style="width:250px"/>
+                            <label for="title" string="Nº Prestações" style="width:150px"/>
+                            <field name="numero_prestacao" style="width:200px" readonly="1"/>
+                            <field name="identificacao_proponente" style="width:200px" invisible="1"/>
+                            <field name="prestacao" style="width:100px" invisible="1"/>
+                            <field name="juros_quadro" style="width:100px" invisible="1"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Juros"/>
+                            <field name="juros" style="width:100px" readonly="1"/>
+                            <label for="title" string="%"/>
+                            <field name="por" style="width:80px" readonly="1"/>
+                            <label for="title" string="" style="width:250px"/>
+                            <label for="title" string="Periodicidade" style="width:150px"/>
+                            <field name="periodicidade" style="width:100px" readonly="1"/>
+                            <label for="title" string="" style="width:5px"/>
+                            <field name="periodquant" style="width:90px" readonly="1"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Data" readonly="1"/>
+                            <field name="data" style="width:200px" readonly="1"/>
+                            <label for="title" string="" style="width:250px"/>
+                            <label for="title" string="Data Primeira" style="width:150px"/>
+                            <field name="data_primeira" style="width:200px" readonly="1"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Período Carência"/>
+                            <field name="periodo_carencia" style="width:120px" readonly="1"/>
+                            <label for="title" string="" style="width:250px"/>
+                            <field name="calcular_juro_periodo_carenc" readonly="1"/>
+                            <label for="title" string="Calcular juros no periodo de Carência" style="width:260px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Metoto Calculo"/>
+                            <field name="metudo_calculo" style="width:150px" readonly="1"/>
+                        </div>
+                        <div>
+                            <label for="title"
+                                   string="___________________________________________________________________________________________________________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                        </div>
+                        <div>
+                            <label for="title" string="" style="width:120px"/>
+                        </div>
+                        <div>
+                            <field name="vedre" widget="radio" style="background:#00b159; color:White; width:320px"/>
+                            <field name="azul" widget="radio" style="background:#00c2c7; color:White; width:320px"/>
+                            <field name="vermelho" widget="radio" style="background:#d11141; color:White; width:320px"/>
+                        </div>
+                        <div>
+                            <field name="reg_docum_ids_desenb" style="width:960px" force_save="1" readonly="1">
+                                <tree editable="bottom" decoration-bf="recebido_completo == True"
+                                      decoration-danger="estado == '1'" decoration-info="estado == '2'"
+                                      decoration-success="estado =='3'" string="Plano gerado" create="false"
+                                      delete="false">
+                                    <field name="numer_prest"/>
+                                    <!--<field name="DFECVEN" readonly="1"/>-->
+                                    <field name="data_documento" readonly="1"/>
+                                    <field name="prestacao" sum="Prestação" readonly="1"/>
+                                    <field name="juro_jerado" sum="Juros" readonly="1"/>
+                                    <field name="amortizacao" sum="Amortização" readonly="1"/>
+                                    <field name="divida" readonly="1"/>
+                                    <field name="cobrado" readonly="1"/>
+                                    <field name="recebido_completo" invisible="1"/>
+                                    <field name="estado" invisible="1"/>
+                                </tree>
+                            </field>
+                        </div>
+                        <field name="vd" widget="radio" style="font-weight: bold; background:#d3d3d3; width:315px"
+                               readonly="1"/>
+                        <field name="valor_em_div" style="font-weight: bold;" readonly="1"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="credito_aprovado_tree" model="ir.ui.view">
+            <field name="name">Credito Aprovado</field>
+            <field name="model">credito.aprovado</field>
+            <field name="arch" type="xml">
+                <tree string="Visualização de Crédito Concedido"><!--create="false" edit="false"-->
+                    <field name="codigo"/>
+                    <field name="IDCREDITO"/>
+                    <field name="cod_op"/>
+                    <field name="identificacao_proponente"/>
+                    <field name="reg_docum_ids_desenb"/>
+                    <field name="valor"/>
+                    <field name="anulado"/>
+                    <field name="renegociado"/>
+                    <field name="numero_prestacao"/>
+                    <field name="utilizador_id"/>
+                    <field name="DOCUMOP"/>
+                    <field name="IDCREDITO"/>
+                    <field name="DOCUMOP"/>
+                    <field name="id"/>
+                    <field name="DOCUMOP_moved0"/>
+                </tree>
+            </field>
+        </record>
+        <record id="aprov_codigo_num" model="ir.sequence">
+            <field name="name">Cred aprov Num</field>
+            <field name="code">desel.codigo</field>
+            <field name="prefix"></field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="form_cred_aprov_search_view" model="ir.ui.view">
+            <field name="name">Todus.Terceiros.search.view</field>
+            <field name="model">credito.aprovado</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="DOCUMOP"/>
+                    <field name="identificacao_proponente"/>
+                    <field name="id"/>
+                </search>
+            </field>
+        </record>
+        <record id="cred_aprov_act_window" model="ir.actions.act_window">
+            <field name="name">Credito Aprovado</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">credito.aprovado</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+        <!-- sub-menu Credito concedido-->
+        <menuitem id="credt_conced_menu" name="Credito Aprovado" parent="gestao_credito_menu"
+                  action="cred_aprov_act_window" sequence="80"/>
+
+    </data>
+</odoo>

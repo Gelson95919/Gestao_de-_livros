@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="report.paperformat" id="paperformat_confissao_divida_report">
+            <field name="name">paperformat.attendance.recap.report</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_width">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">40</field>
+            <field name="margin_right">5</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">5</field>
+            <field name="header_line" eval="True"/>
+            <field name="header_spacing">30</field>
+            <field name="dpi">90</field>
+        </record>
+        <report
+                id="convissao_divida"
+                model="acta.comite"
+                string="Confissão de Dívida"
+                name="gestao_microfinancas.convissao_divida_view"
+                file="gestao_microfinancas.acta_comit_form"
+                paperformat="paperformat_confissao_divida_report"
+                report_type="qweb-pdf"
+                menu="True"/>
+
+        <template id="convissao_divida_view">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div style="border:1px solid black; text-center; margin-left: -1px; height: 43px; margin-top:3px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                            <strong>
+                                <h2>CONFISSÃO DE DÍVIDA</h2>
+                            </strong>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; font-size: 130%; height: 80px; margin-top:30px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: left;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+
+                            <p style="border:0px solid black;  width:100%;">
+                                Eu, <strong><span t-esc="o.proponente"/></strong>, <span t-esc="o.estado_civil"/>, maior. natural da
+                                <span t-esc="o.nome_freguesia"/> -  <span t-esc="o.nome_concelho"/>, residente em <span t-esc="o.endereco_prop"/>,
+                                <strong>CONFESSO-ME</strong>, para todos os efeitos legais, devedor do <strong>SOLMI</strong>, com sede em Ponta d'Agua,
+                                Praia, do Seguinte:
+                            </p>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; font-size: 130%; height: 50px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: left;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+
+                            <p style="border:0px solid black;  width:100%;">
+                                <strong>1.</strong> Capital em divida <strong>***** <span t-esc="o.valor_total"/></strong>  <strong>(<span t-esc="o.valor_escrita"/>)</strong>;
+                            </p>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; font-size: 130%; height: 80px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: left;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+
+                            <p style="border:0px solid black;  width:100%;">
+                                Comprometo-me a efetuar o pagamento da referida quantia em dívida, em <strong><span t-esc="o.prestacao_sugerido"/></strong>
+                                prestações Mensal de <strong><span t-esc="o.juros_quadro"/>Escudos</strong> apartir do dia <strong><span t-esc="o.date_start"/></strong>.
+                            </p>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; font-size: 130%; height: 80px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: left;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+
+                            <p style="border:0px solid black;  width:100%;">
+                                Mais declaro que se nas datas de vencimento de cada uma das prestações não efetuar o pagamento da quantia
+                                em dívida, pagarei a credora acima mencionada uma multa de <strong>500$00</strong> por dia de atraso.
+                            </p>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; font-size: 130%; height: 80px; margin-top:20px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: left;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+
+                            <p style="border:0px solid black;  width:100%;">
+                                A presente confissão e feita de forma livre e espontânia vontade sem quaisquer constrangimentos.
+                            </p>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; font-size: 130%; height: 90px; margin-top:20px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: left;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+
+                            <p style="border:0px solid black;  width:100%;">
+                               Foi na Praia, aos <strong><span t-esc="o.data_acta"/></strong>
+                            </p>
+                        </div>
+                        <div style="border:0px solid black; margin-left: 360px; font-size: 130%; height: 40px; margin-top:50px;  width:30%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: right;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: right;">
+
+                            <p style="border:0px solid black;  width:60%;">
+                                <strong>ASSINA</strong>
+                            </p>
+                        </div>
+                        <div style="border:1px solid black; border-top:0px; margin-left: 200px; font-size: 130%; margin-top:50px;  width:50%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: right;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: right;">
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

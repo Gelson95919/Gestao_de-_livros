@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="renegociacao_credito_form" model="ir.ui.view">
+            <field name="name">Renegociação de Crédito</field>
+            <field name="model">renegociocao.credito</field>
+            <field name="arch" type="xml">
+                <form string="Renegociação de Crédito">
+                    <sheet>
+
+                        <div>
+                            <label for="title" string="Crédito"/>
+                            <field name="credito_id" style="width:260px"/>
+                            <label for="title" string="" style="width:420px"/>
+                            <label for="title" string="Data"/>
+                            <field name="data" style="width:100px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="" style="width:120px"/>
+                        </div>
+                        <div>
+                            <label for="title"
+                                   string="Negócio Anterior________________________________________________________________________________________________________________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Capital"/>
+                            <field name="capital" style="width:260px" readonly="1"/>
+                            <label for="title" string="" style="width:260px"/>
+                            <label for="title" string="Juros"/>
+                            <field name="juros" style="width:260px" readonly="1"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Total" style="width:40px"/>
+                            <field name="total" style="color:Blue; font-weight: bold;width:260px" readonly="1"/>
+                        </div>
+                        <div>
+                            <label for="title" string="" style="width:120px"/>
+                        </div>
+                        <div>
+                            <label for="title"
+                                   string="Montante a Renegociar___________________________________________________________________________________________________________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Divida" style="width:40px"/>
+                            <field name="valor_em_div" style="color:Blue; font-weight: bold;width:260px" readonly="1"/>
+                            <label for="title" string="" style="width:260px"/>
+                            <label for="title" string="Nº Prest" style="width:95px"/>
+                            <field name="num_prestacao" style="width:260px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Multa"/>
+                            <field name="multa" style="width:260px"/>
+                            <label for="title" string="" style="width:260px"/>
+                            <label for="title" string="Outros/Juros" style="width:100px"/>
+                            <field name="outros" style="width:260px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Total"/>
+                            <field name="total_mont_negocio" style="color:Blue; font-weight: bold;width:260px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Data Primeira Prestação"/>
+                            <field name="data_primer_prestacao" style="width:140px"/>
+                        </div>
+                        <div>
+                            <label for="title"
+                                   string="___________________________________________________________________________________________________________________________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Metudo de Calculo"/>
+                            <field name="metudo_calculo" style="width:260px"/>
+                            <label for="title" string="" style="width:25px"/>
+                            <button name="gerar" type="object" string="Gerar" icon="fa-gears"
+                                    style="font-size:15px;color:blue;"/>
+                            <label for="title" string="" style="width:25px"/>
+                            <button name="gerar_plan_desemb" type="object" string="Comfirmar" icon="fa-check-square-o"
+                                    style="font-size:15px;color:blue;"/>
+                        </div>
+                        <div>
+                            <field name="procesando_desembolso_ids" style="width:1070px" force_save="1" readonly="1">
+                                <tree editable="bottom" string="Plano Desembolso">
+                                    <field name="numer_prest"/>
+                                    <field name="data_processado"/>
+                                    <field name="prestacao_processado"/>
+                                    <field name="juros_outros"/>
+                                    <field name="amortizacao"/>
+                                    <field name="capital"/>
+                                </tree>
+                            </field>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="renegociacao_credito_tree" model="ir.ui.view">
+            <field name="name">Renegociação de Crédito</field>
+            <field name="model">renegociocao.credito</field>
+            <field name="arch" type="xml">
+                <tree string="Renegociação de Crédito">
+                    <!--<field name="codigo"/>-->
+                    <field name="credito_id"/>
+                    <field name="total_mont_negocio"/>
+                    <field name="utilizador_id"/>
+
+                </tree>
+            </field>
+        </record>
+        <record id="rene_credit_codigo" model="ir.sequence">
+            <field name="name">Fiadores</field>
+            <field name="code">renegocio.codigo</field>
+            <field name="prefix"></field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="renegoc_num" model="ir.sequence">
+            <field name="name">Renegociação</field>
+            <field name="code">reneg.codigo.num</field>
+            <field name="prefix">RQUO-</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="op_num" model="ir.sequence">
+            <field name="name">OP/Renegociação</field>
+            <field name="code">op.num</field>
+            <field name="prefix">ROP-%(range_year)s/</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="renegociacao_credito_act_window" model="ir.actions.act_window">
+            <field name="name">Renegociação de Crédito</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">renegociocao.credito</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="renegociacao_credito_menu" name="Renegociação de Crédito" parent="gestao_credito_menu"
+                  action="renegociacao_credito_act_window" sequence="80"/>
+    </data>
+</odoo>

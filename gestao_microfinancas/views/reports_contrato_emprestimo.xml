@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="report.paperformat" id="paperformat_contrat_emprestinmo_report">
+            <field name="name">paperformat.attendance.recap.report</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_width">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">40</field>
+            <field name="margin_right">5</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">5</field>
+            <field name="header_line" eval="True"/>
+            <field name="header_spacing">30</field>
+            <field name="dpi">90</field>
+        </record>
+        <report
+                id="contrat_emprest"
+                model="acta.comite"
+                string="Contrato de Empréstimo"
+                name="gestao_microfinancas.contrat_emprest_view"
+                file="gestao_microfinancas.acta_comit_form"
+                paperformat="paperformat_contrat_emprestinmo_report"
+                report_type="qweb-pdf"
+                menu="True"/>
+
+        <template id="contrat_emprest_view">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div style="border:1px solid black; text-center;  padding: 8px; margin-left: -1px; height: 43px; margin-top:10px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                            <strong>
+                                <h3>CONTRATO DE EMPRÉSTIMO</h3>
+                            </strong>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; font-size: 130%; height: 110px; margin-top:20px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: left;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+
+                            <p style="border:0px solid black;  width:100%;">
+                                Entre o <strong>SOLMI COOP</strong>, adiante designado por <strong>SOLMI</strong> representado
+                                pelo
+                                <strong>Sr.
+                                    <span t-esc="o.name_agente"/>
+                                </strong>
+                                , e o Sr(a).
+                                <strong>
+                                    <span t-esc="o.proponente"/>
+                                </strong>
+                                , adiante designada por <strong>BENEFICIÁRIO</strong>, residente em<span
+                                    t-esc="o.endereco_prop"/>, é celebrado o seguinte contrato:
+                            </p>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; font-size: 130%; height: 80px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: left;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+
+                            <p style="border:0px solid black;  width:100%;">
+                                <strong>CLÁUSULA 1ª:</strong>
+                                O SOLMI, concede a <strong>BENEFICIÁRIO</strong> um financiamento no valor de ****
+                                <strong>
+                                    <span t-esc="o.valor_gestor"/>
+                                </strong>
+                                ,
+                                <strong>(
+                                    <span t-esc="o.valor_escrita"/>
+                                    Escudo(s))
+                                </strong>
+                                ,
+                                que será utilizado para
+                                <strong>
+                                    <span t-esc="o.tipo_negocio"/>
+                                </strong>
+                                ;
+                            </p>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; font-size: 130%; height: 80px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: left;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+
+                            <p style="border:0px solid black;  width:100%;">
+                                <strong>CLÁUSULA 2ª:</strong>
+                                A <strong>BENEFICIÁRIO</strong>  se obriga em utilizar o financiamento exclusivamente em
+                                atividades que contam no programa de projeto que deu origem a este contrato;
+                            </p>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; font-size: 130%; height: 80px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: left;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+
+                            <p style="border:0px solid black;  width:100%;">
+                                <strong>CLÁUSULA 3ª:</strong>
+                                A <strong>BENEFICIÁRIO</strong> se obriga a reembolsar o empréstimo na totalidade e
+                                acrescido de juros
+                                <strong>
+                                    <span t-esc="o.juros"/>
+                                </strong>
+                                % ao<span t-esc="o.por"/>;
+                            </p>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; font-size: 130%; height: 80px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: left;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+
+                            <p style="border:0px solid black;  width:100%;">
+                                <strong>CLÁUSULA 4ª:</strong>
+                                O reembolso de empréstimo deverá ser feito em
+                                <strong>
+                                    <span t-esc="o.numero_prestacoes"/>
+                                </strong>
+                                prestações Mensal iguais e consecutivas, a partir do dia
+                                <strong>
+                                    <span t-esc="o.date_start"/>
+                                </strong>
+                                ;
+                            </p>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; font-size: 130%; height: 80px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: left;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+
+                            <p style="border:0px solid black;  width:100%;">
+                                <strong>CLÁUSULA 5ª:</strong>
+                                Em cada prestação o <strong>BENEFICIÁRIO</strong> deve pagar um montante de
+                                <strong>
+                                    <span t-esc="o.valor_total"/>
+                                </strong>
+                                ;
+                            </p>
+                        </div>
+                        <div style="border:1px solid black; ; border-right:0px; ; border-left:0px; width:100%; margin-left: -1px; height: 25px; margin-top:-2px; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal;
+                                                                          display: -moz-box; -moz-box-orient: horizontal; ">
+                            <div class="text-left"
+                                 style="border-right:0px  solid black; padding: 2px; color:red; margin-top: -1px; margin-left: 1px;  width:100px;">
+                                <p>Nº</p>
+                            </div>
+                            <div class="text-left"
+                                 style="border:0px solid black; padding: 2px; color:red; margin-top: -1px; margin-left: -1px; width:100px;">
+                                <p>Data</p>
+                            </div>
+                            <div class="text-center"
+                                 style="border:0px solid black; padding: 2px; color:red; margin-top: -1px; margin-left: 50px; width:100px;">
+                                <p>Prestação</p>
+                            </div>
+                            <div class="text-center"
+                                 style="border:0px solid black; padding: 2px; color:red; margin-top: -1px; margin-left: 50px; width:100px;">
+                                <p>Juro</p>
+                            </div>
+                             <div class="text-center"
+                                 style="border:0px solid black; padding: 2px; color:red; margin-top: -1px; margin-left: 60px; width:100px;">
+                                <p>Amortização</p>
+                            </div>
+                            <div class="text-center"
+                                 style="border:0px solid black; padding: 2px; color:red; margin-top: -1px; margin-left: 60px; width:100px;">
+                                <p>Divida</p>
+                            </div>
+                        </div>
+                        <div style="border:0px">
+                            <table style="width: 100%">
+                                <tbody>
+                                    <t t-foreach="o.reg_docum_ids_desenb" t-as="pf"><!--reg_doc_ids devia ficar esse campo pelo facto de não ter o ata_id no reg_docum coloquei o campo reg_docum_ids_desenb mas o correto e para substituir-->
+                                        <tr>
+                                            <td>
+                                                <span t-esc="pf.numer_prest"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-esc="pf.data_documento"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-esc="pf.prestacao"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-esc="pf.juro_jerado"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-esc="pf.amortizacao"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-esc="pf.divida"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; font-size: 130%; height: 90px; margin-top:20px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: left;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+
+                            <p style="border:0px solid black;  width:100%;">
+                                <strong>CLÁUSULA 6ª:</strong>
+                                Caso o <strong>BENEFICIÁRIO</strong> não comprir o estipulado nas cláusulas deste conmtrato,
+                                 a <strong>SOLMI</strong> reserva o dereito de proceder á cobrança coerciva e imediata do valor equivalente
+                                ao financiamento atribuído, acrescido de juro ao projeto durante o qual a benificiário dipôs do dinheiro;
+                            </p>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; font-size: 130%; height: 80px; margin-top:60px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: left;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+
+                            <p style="border:0px solid black;  width:100%;">
+                                <strong>CLÁUSULA 7ª:</strong> Todos os bens adquiridos com o financiamento atribuido, são considerados patrimõnios
+                                do <strong>SOLMI</strong>, emquanto o reembolso não for efectuado na totalidade;
+                            </p>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; font-size: 130%; height: 80px; margin-top:10px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: left;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+
+                            <p style="border:0px solid black;  width:100%;">
+                                <strong>CLÁUSULA 8ª:</strong> Findo o reembolso todos os bens adquiridos e produzidos durante o exercícios da atividades
+                                decorrente deste contrato passarão a ser património da  <strong>BENEFICIÁRIO</strong>;
+                            </p>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; font-size: 130%; height: 80px; margin-top:40px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: left;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+
+                            <p style="border:0px solid black;  width:100%;">
+                                <strong>CLÁUSULA 9ª:</strong> Durante o desenvolvimento das atividades, a equipa executiva do <strong>SOLMI</strong>,
+                                acompanha a implementação das ações e apoia a <strong>BENEFICIÁRIO</strong> no processo de procura de soluções para
+                                o bom funcionamento de projeto;
+                            </p>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; font-size: 130%; height: 80px; margin-top:20px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: left;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+
+                            <p style="border:0px solid black;  width:100%;">
+                                <strong>CLÁUSULA 10ª:</strong> A <strong>BENEFICIÁRIO</strong> se obriga a prestar todas as informações relativas ao desenvolvimento
+                                do projeto ao <strong>SOLMI</strong>;
+                            </p>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; font-size: 130%; height: 80px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: left;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+
+                            <p style="border:0px solid black;  width:100%;">
+                                <strong>CLÁUSULA 11ª:</strong> As obrigações assumidas pela <strong>BENEFICIÁRIO</strong> são garantida por fiança
+                                prestada pelos Srs. , e;
+                            </p>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; font-size: 130%; height: 80px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: left;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: left;">
+
+                            <p style="border:0px solid black;  width:100%;">
+                                <strong>CLÁUSULA 12ª:</strong> Os casos omissos serão resolvidos entre as duas partes e de comum acordo e, na falta
+                                deste, segundo as leis que regulam os contraros de mútuos celebrados entre Instituições de Micro-Finanças e os beneficiários
+                                em cabo verde.
+                            </p>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; font-size: 130%; height: 80px; margin-top:50px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: right;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: right;">
+
+                            <p class="text-right" style="border:0px solid black;  width:100%;">
+                                Praia, <span t-esc="o.data_acta"/>
+                            </p>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; font-size: 130%; height: 80px; margin-top:50px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: right;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: right;">
+
+                            <p style="border:0px solid black;  width:50%;">
+                                <strong>O representante do SOLMI </strong>
+                            </p>
+                        </div>
+                        <div style="border:1px solid black; border-top:0px; margin-left: -1px; font-size: 130%; margin-top:-50px;  width:30%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: right;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: right;">
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; font-size: 130%; height: 80px; margin-top:-1px;  width:50%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: right;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: right;">
+
+                            <p style="border:0px solid black;  width:100%;">
+                                <strong><span t-esc="o.name_agente"/></strong>
+                            </p>
+                        </div>
+                        <div style="border:0px solid black; margin-left: 460px; font-size: 130%; height: 40px; margin-top:-110px;  width:30%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: right;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: right;">
+
+                            <p style="border:0px solid black;  width:60%;">
+                                <strong>BENEFICIÀRIA</strong>
+                            </p>
+                        </div>
+                        <div style="border:1px solid black; border-top:0px; margin-left: 460px; font-size: 130%; margin-top:-1px;  width:50%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: right;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: right;">
+                        </div>
+                        <div style="border:0px solid black; margin-left: 460px; font-size: 130%; height: 40px; margin-top:2px;  width:50%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: right;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: right;">
+
+                            <p style="border:0px solid black;  height: 30px; width:100%;">
+                                <strong><span t-esc="o.proponente"/></strong>
+                            </p>
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; font-size: 130%; height: 80px; margin-top:50px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: right;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: right;">
+
+                            <p style="border:0px solid black;  width:50%;">
+                                <strong>OS FIADORES</strong>
+                            </p>
+                        </div>
+                        <div style="border:1px solid black; border-top:0px; margin-left: -1px; font-size: 130%; margin-top:-50px;  width:30%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: right;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: right;">
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; font-size: 130%; height: 80px; margin-top:-1px;  width:50%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: right;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: right;">
+
+                            <p style="border:0px solid black;  width:30%;">
+                                <strong>x</strong>
+                            </p>
+                        </div>
+                        <div style="border:1px solid black; border-top:0px; margin-left: -1px; font-size: 130%; margin-top:-50px;  width:30%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: right;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: right;">
+                        </div>
+                        <div style="border:0px solid black; margin-left: -1px; font-size: 130%; height: 80px; margin-top:-1px;  width:50%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: right;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: right;">
+
+                            <p style="border:0px solid black;  width:30%;">
+                                <strong>x</strong>
+                            </p>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

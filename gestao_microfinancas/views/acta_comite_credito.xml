@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="acta_comit_form" model="ir.ui.view">
+            <field name="name">Ata</field>
+            <field name="model">acta.comite</field>
+            <field name="arch" type="xml">
+                <form string="Acta">
+                    <header>
+                        <!--<button name="compor_op" string=" ADD Juros" type="object" class="btn-primary"/>-->
+                        <button name="fechar" string="Fechar Ata" attrs="{'invisible': [('fecha_abre','!=','False')]}"
+                                type="object" icconfirm="Tem certeza de que deseja continuar?" on="fa-lock"
+                                class="btn-primary"/>
+                        <button name="abrir" string="Abrir" attrs="{'invisible': [('fecha_abre','!=','True')]}"
+                                type="object" icon="fa-unlock" class="btn-primary"/>
+                        <!--<button name="anular" attrs="{'invisible': [('fecha_abre','!=','2')]}" string="Anular Ata"
+                                type="object" icon="fa-window-close-o"
+                                class="btn-primary"/>-->
+                        <field name="estado" widget="statusbar" options="{'fold_field': 'fold'}"/>
+                        <!--<field name="fecha_abre" style="width:100px" invisible="1"/>-->
+                    </header>
+
+                    <sheet>
+
+
+                        <field name="fecha_abre" style="width:100px" invisible="1"/>
+
+                        <div class="alert alert-success alert-dismissible"
+                             invisible="not context.get('show_message', False)">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">X</a>
+                            <strong>Success!</strong>
+                            Indicates a successful or positive action.
+                        </div>
+                        <div>
+                            <field name="codigo_credito" invisible="1"/>
+                            <label for="title" string="Nº Acta"/>
+                            <field name="codigo" style="width:260px"/>
+                            <label for="title" string="" style="width:400px"/>
+                            <label for="title" string="Data Acta" style="width:70px"/>
+                            <field name="data_acta" style="width:100px"
+                                   attrs="{'readonly': [('fecha_abre','!=','True')]}"/>
+                        </div>
+                        <div>
+                            <label for="title" string="" style="width:120px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Pedido"/>
+                            <field name="pedido_id" style="width:260px" options="{'no_create': True}"
+                                   attrs="{'readonly': [('fecha_abre','=','True')]}"/>
+                            <label for="title" string="" style="width:400px"/>
+                            <label for="title" string="Data Pedido"/>
+                            <field name="data_pedido" style="width:100px"
+                                   attrs="{'readonly': [('fecha_abre','=','True')]}"/>
+                        </div>
+                        <notebook>
+                            <page string="Dados Gerais">
+                                <div>
+                                    <label for="title" string="" style="width:120px"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="Ilha/Cidade" style="width:90px"/>
+                                    <field name="ilha_cliente" style="width:800px"
+                                           attrs="{'invisible': [('fecha_abre','=','True')]}"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="Agente" style="width:90px"/>
+                                    <field name="agente" style="width:800px"
+                                           attrs="{'invisible': [('fecha_abre','=','True')]}"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="Proponente" style="width:90px"/>
+                                    <!--<field name="proponente" style="width:800px"/>-->
+                                    <field name="identificacao_proponente" style="width:800px"
+                                           attrs="{'invisible': [('fecha_abre','=','True')]}"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="Atraso anterior"/>
+                                    <label for="title" string="" style="width:600px"/>
+                                    <label for="title" string="% Avaliação qualitativa de risco"/>
+                                </div>
+                                <div>
+                                    <field name="atraso_anterior" nolabel="1" widget="radio"
+                                           attrs="{'invisible': [('fecha_abre','!=','True')]}"
+                                           options="{'horizontal': true}"/>
+                                    <label for="title" string="" style="width:680px"/>
+                                    <field name="avaliacao_qualitativa" style="width:100px"
+                                           attrs="{'invisible': [('fecha_abre','=','True')]}"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="" style="width:120px"/>
+                                </div>
+                                <div>
+                                    <label for="title"
+                                           string="______________Descrição_____________________________________"
+                                           style="color:Blue; font-weight: bold;"/>
+                                    <label for="title"
+                                           string="____________________________Cliente_________________________________________________"
+                                           style="color:Blue; font-weight: bold;"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="Nome do Cliente" style="width:640px"/>
+                                    <field name="nome_cliente" style="width:260px"
+                                           attrs="{'readonly': [('fecha_abre','=','True')]}"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="Tipo de Negócio" style="width:640px"/>
+                                    <field name="tipo_negocio" style="width:260px"
+                                           attrs="{'readonly': [('fecha_abre','=','True')]}"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="Receitas Operacionais" style="width:640px"/>
+                                    <field name="receita_operacionais" style="width:260px"
+                                           attrs="{'readonly': [('fecha_abre','=','True')]}"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="Custos Operacionais" style="width:640px"/>
+                                    <field name="custos_opracionais" style="width:260px"
+                                           attrs="{'readonly': [('fecha_abre','=','True')]}"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="Capacidade de Pagto (mês)" style="width:640px"/>
+                                    <field name="capacidade_pacto" style="width:260px"
+                                           attrs="{'readonly': [('fecha_abre','=','True')]}"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="Informações Cadastrais" style="width:640px"/>
+                                    <field name="informacoes_cadastrais" style="width:260px"
+                                           attrs="{'readonly': [('fecha_abre','=','True')]}"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="Valor do Crédito Anterior" style="width:640px"/>
+                                    <field name="valor_credito_anterior" style="width:260px"
+                                           attrs="{'readonly': [('fecha_abre','=','True')]}"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="Valor Solicitado (Cliente)" style="width:640px"/>
+                                    <field name="valor_solicitado" style="width:260px"
+                                           attrs="{'readonly': [('fecha_abre','!=','True')]}"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="Prestação Solicitada (Cliente)" style="width:640px"/>
+                                    <field name="prestacao_solicitada" style="width:260px"
+                                           attrs="{'readonly': [('fecha_abre','=','True')]}"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="Valor Sugirido (Agente)" style="width:640px"/>
+                                    <field name="valor_sugerido" style="width:260px"
+                                           attrs="{'readonly': [('fecha_abre','=','True')]}"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="Prestação Sugirido (Agente)" style="width:640px"/>
+                                    <field name="prestacao_sugerido" style="width:260px"
+                                           attrs="{'readonly': [('fecha_abre','=','True')]}"/>
+                                </div>
+                            </page>
+                            <page string="Parecer Gestor">
+                                <div>
+
+                                </div>
+                                <div>
+                                    <field name="tipo" widget="radio" options="{'horizontal': true}"
+                                           attrs="{'readonly': [('fecha_abre','=','True')]}"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="Valor" style="width:50px"/>
+                                    <field name="valor_gestor" nolabel="1" style="width:250px"
+                                           attrs="{'readonly': [('fecha_abre','=','True')]}"/>
+                                    <label for="title" string="" style="width:120px"/>
+                                    <label for="title" string="Valor de prestação"/>
+                                    <field name="valor_prestacao" nolabel="1" style="width:260px"
+                                           attrs="{'readonly': [('fecha_abre','=','True')]}"/>
+                                    <label for="title" string="" style="width:20px"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="Prazo" style="width:50px"/>
+                                    <field name="prazo" nolabel="1" style="width:250px"
+                                           attrs="{'readonly': [('fecha_abre','=','True')]}"/>
+                                    <label for="title" string="" style="width:120px"/>
+                                    <label for="title" string="Periodicidade" style="width:110px"/>
+                                    <field name="periodicidade_agent" nolabel="1" style="width:260px"
+                                           attrs="{'readonly': [('fecha_abre','=','True')]}"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="Gerente"/>
+                                </div>
+                                <div>
+                                    <field name="parecer" nolabel="1"
+                                           attrs="{'readonly': [('fecha_abre','=','True')]}"/>
+                                </div>
+                                <div><!--attrs="{'invisible': [('tipo','!=','True')]}"-->
+                                    <field name="submeter_comite" nolabel="1"
+                                           attrs="{'invisible':[('estado','=', '4')]}"/>
+                                    <label for="title" string="Submeter para Aprovação do Comite"/>
+                                </div>
+                            </page>
+                            <page string="Parecer Comite" attrs="{'invisible': [('submeter_comite','!=',True)]}">
+                                <div>
+                                    <label for="title" string="" style="width:120px"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="Aprovado"/>
+                                    <field name="aprovado" nolabel="1" widget="radio"
+                                           attrs="{'readonly': [('fecha_abre','=','True')]}"
+                                           options="{'horizontal': true}"/>
+                                </div>
+
+
+                                <div>
+                                    <label for="title" string="" style="width:120px"/>
+                                </div>
+                                <div>
+                                    <label for="title"
+                                           string="Juros__________________________________________________________________________________________________________________________________________________"
+                                           style="color:Blue; font-weight: bold;"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="Taxa"/>
+                                    <field name="juros" style="width:100px"
+                                           attrs="{'invisible': [('aprovado','!=','True')],'readonly': [('fecha_abre','=','True')]}"/>
+                                    <label for="title" string="" style="width:50px"/>
+                                    <label for="title" string="%"/>
+                                    <field name="por" style="width:100px"
+                                           attrs="{'invisible': [('aprovado','!=','True')],'readonly': [('fecha_abre','=','True')]}"/>
+                                    <label for="title" string="" style="width:350px"/>
+                                    <label for="title" string="Calculo" style="width:130px"/>
+                                    <field name="metudo_calculo" style="width:100px"
+                                           attrs="{'invisible': [('aprovado','!=','True')],'readonly': [('fecha_abre','=','True')]}"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="" style="width:120px"/>
+                                </div>
+                                <div>
+                                    <label for="title"
+                                           string="Credito__________________________________________________________________________________________________________________________________________________"
+                                           style="color:Blue; font-weight: bold;"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="" style="width:120px"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="Número" style="width:200px"/>
+                                    <field name="numero" style="width:100px"
+                                           attrs="{'invisible': [('aprovado','!=','True')],'readonly': [('fecha_abre','=','True')]}"/>
+                                    <label for="title" string="" style="width:350px"/>
+                                    <label for="title" string="Valor Total" style="width:130px"/>
+                                    <field name="valor_total" style="width:100px"
+                                           attrs="{'invisible': [('aprovado','!=','True')],'readonly': [('fecha_abre','=','True')]}"/>
+                                    <field name="valor_escrita" style="width:150px"
+                                           placeholder="Valor por escrita" invisible="1"/>
+                                    <label for="title" string="" style="width:5px"/>
+                                    <button name="plano_financiamento" type="object" class="btn-primary"
+                                            string="Plano de Financiamento" icon="fa-credit-card"
+                                            attrs="{'invisible': [('aprovado','!=','True')],'readonly': [('fecha_abre','=','True')]}"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="Nº Prestações" style="width:200px"/>
+                                    <field name="numero_prestacoes" style="width:100px"
+                                           attrs="{'invisible': [('aprovado','!=','True')],'readonly': [('fecha_abre','=','True')]}"/>
+                                    <label for="title" string="" style="width:350px"/>
+                                    <label for="title" string="Periodicidade" style="width:130px"/>
+                                    <field name="periodicidade" style="width:100px"
+                                           attrs="{'invisible': [('aprovado','!=','True')],'readonly': [('fecha_abre','=','True')]}"/>
+                                </div>
+                                <div>
+                                    <!--<label for="title" string="Mês" style="width:200px"/>
+                                    <field name="mes" style="width:100px"
+                                           attrs="{'invisible': [('aprovado','!=','sim')],'readonly': [('fecha_abre','!=','1')]}"/>-->
+                                    <label for="title" string="Períodos de Carência" style="width:200px"/>
+                                    <field name="periodo_carencia" style="width:100px"
+                                           attrs="{'invisible': [('aprovado','!=','True')],'readonly': [('fecha_abre','=','True')]}"/>
+                                    <label for="title" string="" style="width:350px"/>
+
+                                    <label for="title" string="Data Desembolso" style="width:130px"/>
+                                    <field name="data_desembolso" style="width:100px"
+                                           attrs="{'invisible': [('aprovado','!=','True')],'readonly': [('fecha_abre','=','True')]}"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="Primeira Prestação" style="width:200px"/>
+                                    <field name="date_start" style="width:100px"
+                                           attrs="{'invisible': [('aprovado','!=','True')],'readonly': [('fecha_abre','=','True')]}"/>
+                                    <label for="title" string="" style="width:350px"/>
+
+                                </div>
+                                <div>
+                                    <field name="calcular_juro"
+                                           attrs="{'readonly': [('aprovado','!=','True')],'readonly': [('fecha_abre','=','True')]}"/>
+                                    <label for="title" string="Calcular juros no Períodos Carência"/>
+                                    <label for="title" string="" style="width:400px"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="" style="width:120px"/>
+                                </div>
+                                <div>
+                                    <label for="title"
+                                           string="Comissão_______________________________________________________________________________________________________________________________________________"
+                                           style="color:Blue; font-weight: bold;"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="Funcionamento taxa Comissão"/>
+                                    <field name="financiamento_taxa" widget="radio" options="{'horizontal': true}"
+                                           attrs="{'invisible': [('aprovado','!=','True')],'readonly': [('fecha_abre','=','True')]}"/>
+                                    <label for="title" string="" style="width:350px"/>
+                                    <label for="title" string="Valor" style="width:130px"/>
+                                    <field name="valor" style="width:100px"
+                                           attrs="{'invisible': [('aprovado','!=','True')],'readonly': [('fecha_abre','=','True')]}"/>
+                                    <label for="title" string="" style="width:5px"/>
+                                    <field name="valor_percentual" style="width:10px"
+                                           attrs="{'invisible': [('aprovado','!=','True')],'readonly': [('fecha_abre','=','True')]}"/>
+                                    <label for="title" string="%"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="" style="width:120px"/>
+                                </div>
+                                <div>
+                                    <label for="title"
+                                           string="Poupança_______________________________________________________________________________________________________________________________________________"
+                                           style="color:Blue; font-weight: bold;"/>
+                                </div>
+                                <div>
+                                    <field name="gerar_conta_popanc"
+                                           attrs="{'invisible': [('aprovado','!=','True')],'readonly': [('fecha_abre','=','True')]}"/>
+                                    <label for="title" string="Gerar Conta Poupança" style="width:200px"/>
+                                    <label for="title" string="" style="width:430px"/>
+                                    <label for="title" string="Montante" style="width:130px"/>
+                                    <field name="montante" style="width:100px"
+                                           attrs="{'invisible': [('aprovado','!=','True')],'readonly': [('fecha_abre','=','True')]}"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="" style="width:120px"/>
+                                </div>
+                                <div>
+                                    <label for="title"
+                                           string="Fundo de Financiamento__________________________________________________________________________________________________________________________________"
+                                           style="color:Blue; font-weight: bold;"/>
+                                </div>
+                                <div>
+                                    <label for="title" string="Fundo"/>
+                                    <field name="fundo_id" style="width:260px"
+                                           attrs="{'invisible': [('aprovado','!=','True')],'readonly': [('fecha_abre','=','True')]}"
+                                           options="{'no_create': True}"/>
+                                </div>
+                            </page>
+                            <page string="Composição do Comite / OBS"
+                                  attrs="{'invisible': [('submeter_comite','!=',True)]}">
+                                <div>
+                                    <label for="title" string="" style="width:120px"/>
+                                </div>
+                                <div class="oe_inline">
+                                    <field name="comite_list_ids" style="width:1070px"
+                                           attrs="{'readonly': [('fecha_abre','=','True')]}">
+                                        <tree editable="bottom" string="Composição">
+                                            <field name="name"/>
+                                            <field name="cargo"/>
+                                        </tree>
+                                    </field>
+                                </div>
+                                <div>
+                                    <label for="title" string="Observação"/>
+                                </div>
+                                <div>
+                                    <field name="obs" attrs="{'readonly': [('fecha_abre','=','True')]}"/>
+                                </div>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="acta_tree" model="ir.ui.view">
+            <field name="name">Acta</field>
+            <field name="model">acta.comite</field>
+            <field name="arch" type="xml">
+                <tree string="Acta Comitê Crédito">
+                    <field name="codigo"/>
+                    <!--<field name="codigo_credito"/>-->
+                    <field name="identificacao_proponente"/>
+                    <field name="agente"/>
+                    <field name="valor_sugerido"/>
+                    <field name="data_acta"/>
+                    <!--<field name="fecha_abre"/>-->
+                    <field name="estado"/>
+                    <field name="data_pedido"/>
+                    <field name="id_credito"/>
+                    <!--<field name="anulado"/>-->
+                </tree>
+            </field>
+        </record>
+        <record id="acta_codigo" model="ir.sequence">
+            <field name="name">Acta</field>
+            <field name="code">ata.codigo</field>
+            <field name="prefix"></field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="acta_num_cred" model="ir.sequence">
+            <field name="name">Acta Numero Credito</field>
+            <field name="code">ata.numero</field>
+            <field name="prefix"></field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="acta_quo_codigo_num" model="ir.sequence">
+            <field name="name">Acta Num</field>
+            <field name="code">acta.codigo.num</field>
+            <field name="prefix">QUO-</field>
+            <field name="padding">6</field>
+
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="sequ_op_codigo_num" model="ir.sequence">
+            <field name="name">OP/Microcred</field>
+            <field name="code">op.micro.num</field>
+            <field name="prefix">OP-%(range_year)s/</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="sequ_clientes_codigo" model="ir.sequence">
+            <field name="name">Clientes</field>
+            <field name="code">sequ.clientes.codigo</field>
+            <field name="prefix">C</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="form_ata_search_view" model="ir.ui.view">
+            <field name="name">Ata Comitê Crédito</field>
+            <field name="model">acta.comite</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="identificacao_proponente"/>
+                    <field name="nome_cliente"/>
+                    <field name="id"/>
+                </search>
+            </field>
+        </record>
+        <record id="acta_act_window" model="ir.actions.act_window">
+            <field name="name">Ata Comitê Crédito</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">acta.comite</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Criar um novo Acta.
+                </p>
+                <p>
+                    Organize suas atividades (planeje tarefas, acompanhe problemas, planilhas de Acta Comitê Crédito)
+                    para projetos internos, pessoais ou de clientes.
+                </p>
+            </field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="acta_menu" name="Ata Comitê Crédito" parent="gestao_credito_menu" action="acta_act_window"
+                  sequence="80"/>
+        <record id="fund_form" model="ir.ui.view">
+            <field name="name">Fundos</field>
+            <field name="model">fundos.fundos</field>
+            <field name="arch" type="xml">
+                <form string="Fundos">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="meio_monetario"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="fund_tree" model="ir.ui.view">
+            <field name="name">Fundos</field>
+            <field name="model">fundos.fundos</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="name"/>
+                    <field name="meio_monetario"/>
+                </tree>
+            </field>
+        </record>
+        <record id="fund_act_wind" model="ir.actions.act_window">
+            <field name="name">Fundos</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fundos.fundos</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <!--<menuitem id="fund_menu" name="FUNDOS" parent="gestao_credito_menu" action="fund_act_wind" sequence="80"/>-->
+
+        <record id="comite_form" model="ir.ui.view">
+            <field name="name">Comite</field>
+            <field name="model">comite.credito</field>
+            <field name="arch" type="xml">
+                <form string="Comite">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="cargo"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="comit_tree" model="ir.ui.view">
+            <field name="name">Fundos</field>
+            <field name="model">comite.credito</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="name"/>
+                    <field name="cargo"/>
+                </tree>
+            </field>
+        </record>
+        <record id="comit_act_wind" model="ir.actions.act_window">
+            <field name="name">Comite</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">comite.credito</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <!--<menuitem id="comit_menu" name="COMITE" parent="gestao_credito_menu" action="comit_act_wind" sequence="80"/>-->
+
+    </data>
+</odoo>

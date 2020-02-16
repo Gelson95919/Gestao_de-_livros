@@ -1,0 +1,1236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="solicitacao_credito_form" model="ir.ui.view">
+            <field name="name">Solicitação de Crédito</field>
+            <field name="model">solicitacao.credito</field>
+            <field name="arch" type="xml">
+                <form string="Solicitação de Crédito">
+                    <header>
+                        <!--<button name="assoc_flux_caixa"  icon="fa-print" string="Fluxo Caixa/Balanço" type="object" class="btn-primary"/>-->
+                        <!--<button name="avalist_get_report"  icon="fa-print" string="Ficha Avalista" type="object" class="btn-primary"/>-->
+                        <field name="estado" widget="statusbar" force_save="1"/>
+                    </header>
+                    <sheet>
+                        <div>
+                            <!-- invisible="1"-->
+                            <label for="title" string="Origem" style="width:90px"/>
+                            <field name="origem" style="width:290px" attrs="{'readonly':[('estado','=', '3')]}"/>
+                            <label for="title" string="" style="width:460px"/>
+                            <label for="title" string="Nº Controlo" style="width:90px"/>
+                            <field name="codigo" style="width:90px"/>
+                            <field name="pont_qualif" style="width:90px" force_save="1" invisible="1"/>
+                            <field name="nqualificacao" style="width:90px" force_save="1" invisible="1"/>
+
+                            <field name="tem_fluxo" style="width:90px" force_save="1" invisible="1"/>
+                            <field name="tem_balanco" style="width:90px" force_save="1" invisible="1"/>
+
+                        </div>
+                        <div>
+                            <label for="title" string="Data" style="width:90px"/>
+                            <field name="data" style="width:290px" attrs="{'readonly':[('estado','=', '3')]}"/>
+                        </div>
+                        <div>
+                            <label for="title" string="" style="width:120px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Identificação do Propornente"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Proponente" style="width:90px"/>
+                            <field name="identificacao_proponente" style="width:290px"
+                                   attrs="{'readonly':[('estado','=', '3')]}" options="{'no_create': True}"/>
+                            <field name="util_agent" invisible="1"/><!--Fundamental para congtrolo de Utilizador-->
+                        </div>
+                        <div>
+                            <notebook>
+                                <page string="Dados Gerais">
+                                    <div>
+                                        <label for="title" string="" style="width:120px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title"
+                                               string="Solicitação de Crédito_____________________________________________________________________________________________________________________________________"
+                                               style="color:Blue; font-weight: bold;"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Valor Solicitado" style="width:125px"/>
+                                        <field name="valor_solicitado" style="width:260px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                        <label for="title" string="" style="width:120px"/>
+                                        <label for="title" string="Prestação que pode pagar"/>
+                                        <field name="prestacao_pagar" style="width:260px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                        <label for="title" string="" style="width:20px"/>
+                                        <!--<button name="s" type="object" string="S" class="btn-primary"/>-->
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Prazo/Nº Prestações"/>
+                                        <field name="numero_prestacoes" style="width:260px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                        <label for="title" string="" style="width:120px"/>
+                                        <label for="title" string="Periodicidade" style="width:160px"/>
+                                        <field name="periodicidade" style="width:260px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Finalidade" style="width:125px"/>
+                                        <field name="finalidade" style="width:260px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                        <label for="title" string="" style="width:120px"/>
+                                        <label for="title" string="Primeira Vez" style="width:160px"/>
+                                        <field name="primeir_vez" style="width:260px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Actividade" style="width:125px"/>
+                                        <field name="actividade" style="width:815px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Aplicação" style="width:125px"/>
+                                        <field name="aplicacao" style="width:260px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                        <label for="title" string="" style="width:20px"/>
+                                        <field name="outro_aplica" style="width:530px" placeholder="Específica outros"
+                                               attrs="{'readonly':[('estado','=', '3')],'invisible': [('aplicacao','!=','4')], 'required':[('aplicacao','in',['pending','4'])]}"/><!--, 'required':[('aplicacao','in',['pending','4'])]-->
+
+                                    </div>
+                                    <div>
+                                        <label for="title" string="" style="width:120px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title"
+                                               string="Dados Aplicação______________________________________________________________________________________________________________________________________"
+                                               style="color:Blue; font-weight: bold;"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Nome" style="width:125px"/>
+                                        <field name="nome" style="width:820px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Endereço" style="width:125px"/>
+                                        <field name="endereco" style="width:820px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Bairro" style="width:125px"/>
+                                        <field name="bairo_id" style="width:820px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Duração" style="width:125px"/>
+                                        <field name="inicio" style="width:260px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                        <label for="title" string="" style="width:125px"/>
+                                        <label for="title" string="Condição do Imovel" style="width:160px"/>
+                                        <field name="cond_imovel" style="width:265px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Telefone" style="width:125px"/>
+                                        <field name="telefone_pessoa" style="width:260px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                        <label for="title" string="" style="width:125px"/>
+                                        <label for="title" string="Local Trabalho" style="width:160px"/>
+                                        <field name="local_trabalho" style="width:265px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="" style="width:680px"/>
+                                        <field name="especifica_outro_loc_trab" style="width:265px"
+                                               placeholder="Específica outros Local"
+                                               attrs="{'readonly':[('estado','=', '3')],'invisible': [('local_trabalho','!=','5')], 'required':[('local_trabalho','in',['pending','5'])]}"/><!---->
+
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Setor" style="width:125px"/>
+                                        <field name="setor" style="width:260px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                        <label for="title" string="" style="width:125px"/>
+                                        <label for="title" string="Area" style="width:160px"/>
+                                        <field name="area" style="width:265px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                    </div>
+
+                                    <div>
+                                        <label for="title" string="" style="width:125px"/>
+                                        <field name="especifica_outro_setor" style="width:260px"
+                                               placeholder="Específica outros Setor"
+                                               attrs="{'readonly':[('estado','=', '3')],'invisible': [('setor','!=','11')], 'required':[('setor','in',['pending','11'])]}"/><!---->
+                                        <label for="title" string="" style="width:125px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Estrutura Física" style="width:125px"/>
+                                        <field name="estrotura_fisica" style="width:260px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                        <label for="title" string="" style="width:125px"/>
+                                        <label for="title" string="Tipo Controle" style="width:160px"/>
+                                        <field name="tipo_controle" style="width:265px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Nº de pessoas que trabalham no negócio"/>
+                                        <field name="num_pessoa_negoc" style="width:130px"
+                                               readonly="1" attrs="{'readonly':[('estado','=', '3')]}"/>
+                                        <label for="title" string="" style="width:125px"/>
+                                        <label for="title" string="Familiar" style="width:160px"/>
+                                        <field name="familiar" style="width:95px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                        <label for="title" string="Não Familiar"/>
+                                        <field name="nao_familiar" style="width:90px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Nº de pessoas que dependem do negócio"/>
+                                        <field name="num_pess_dep_negoc" style="width:130px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                        <label for="title" string="" style="width:120px"/>
+                                        <label for="title" string="Renda Familiar" style="width:160px"/>
+                                        <field name="renda_familiar" style="width:270px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Participou em alguma Capacitação"/>
+                                        <field name="participou_capacitacao" widget="radio"
+                                               attrs="{'readonly':[('estado','=', '3')]}"
+                                               options="{'horizontal': true}"/>
+                                        <label for="title" string="" style="width:180px"/>
+                                        <label for="title" string="Qual?" style="width:160px"
+                                               attrs="{'invisible': [('participou_capacitacao','=', 'False')]}"/>
+                                        <field name="qual" style="width:270px"
+                                               attrs="{'readonly':[('estado','=', '3')], 'invisible': [('participou_capacitacao','=', 'False')], 'required':[('participou_capacitacao','in',['pending','True'])]}"/><!---->
+
+                                    </div>
+                                </page>
+                                <page string="Plano Aplicação">
+                                    <div>
+                                        <label for="title" string="" style="width:120px"/>
+                                    </div>
+                                    <div class="oe_inline">
+                                        <field name="plano_aplicacao_ids" style="width:1070px"
+                                               attrs="{'readonly':[('estado','=', '3')]}">
+                                            <tree editable="bottom" string="Plano Aplicação">
+                                                <field name="item"/>
+                                                <field name="unidade_id"/>
+                                                <field name="preco_unit"/>
+                                                <field name="quantidade"/>
+                                                <field name="total" sum="Total"/>
+                                                <field name="verif"/>
+                                            </tree>
+
+                                        </field>
+                                        <field name="valor_total" invisible="1"/>
+                                    </div>
+                                </page>
+                                <page string="Garantias">
+                                    <div>
+                                        <label for="title" string="" style="width:120px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Tipo Propornente" style="width:120px"/>
+                                        <field name="tipo_grupo" style="width:260px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                        <field name="nome_grupo" style="width:260px" placeholder="Nome Grupo"
+                                               attrs="{'invisible': [('tipo_grupo','!=','3')], 'required':[('tipo_grupo','in',['pending','3'])]}"
+                                               options="{'no_create': True}"/><!---->
+                                    </div>
+                                    <div class="oe_inline">
+                                        <field name="lista_group" style="width:1070px"
+                                               attrs="{'invisible': [('tipo_grupo','!=','3')], 'required':[('tipo_grupo','in',['pending','3'])]}"
+                                               options="{'limit': 10, 'create': false, 'create_edit': false}"><!---->
+                                            <tree editable="bottom" string="Grupos" delete="false" create="false">
+                                                <field name="nome"/>
+                                                <field name="codigo"/>
+                                            </tree>
+                                        </field>
+                                    </div>
+                                    <div attrs="{'invisible': [('tipo_grupo','=','3')]}">
+                                        <label for="title" string="Declaração de Bens"/>
+                                        <field name="declarar_bens" attrs="{'readonly':[('estado','=', '3')]}"/>
+                                    </div>
+                                    <div class="oe_inline" attrs="{'invisible': [('tipo_grupo','=','3')]}">
+                                        <field name="declaracoes_bens_ids" style="width:1070px"
+                                               attrs="{'readonly':[('estado','=', '3')], 'readonly': [('declarar_bens','=',False)]}">
+                                            <tree editable="bottom" string="Declarações de Bens">
+                                                <field name="item"/>
+                                                <field name="valor" sum="Valor"/>
+                                            </tree>
+                                        </field>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="" style="width:120px"/>
+                                    </div>
+                                    <div attrs="{'invisible': [('tipo_grupo','=','3')]}">
+                                        <label for="title" string="Declaração de Fiança"/>
+                                        <field name="declarar_fianca" attrs="{'readonly':[('estado','=', '3')]}"/>
+                                    </div>
+                                    <div class="oe_inline" attrs="{'invisible': [('tipo_grupo','=','3')]}">
+                                        <field name="declaracoes_fiancas_ids" style="width:1070px"
+                                               attrs="{'readonly':[('estado','=', '3')], 'readonly': [('declarar_fianca','=',False)]}">
+                                            <tree editable="bottom" string="Declarações de Fiança">
+                                                <field name="fiador_id" options="{'no_create': True}"/>
+                                                <field name="nome"/>
+                                            </tree>
+                                        </field>
+                                    </div>
+                                </page>
+                                <page string="Qualificação">
+                                    <div>
+                                        <label for="title" string="" style="width:120px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" style="color:Blue; font-weight: bold;"
+                                               string="Estabilidade______________________________________"/>
+                                        <label for="title" string="" style="width:90px"/>
+                                        <label for="title" style="color:Blue; font-weight: bold;"
+                                               string="Habilidade__________________________________________"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Tempo moradia na comunidade"/>
+                                        <label for="title" string="" style="width:250px"/>
+                                        <label for="title" string="Conhece a actividade"/>
+                                    </div>
+                                    <div>
+                                        <field name="tempo_moradia_na_comunidade"
+                                               attrs="{'readonly':[('estado','=', '3')]}" nolabel="1"
+                                               style="width:350px"/>
+                                        <label for="title" string="" style="width:100px"/>
+                                        <field name="conhece_actividade" nolabel="1" style="width:350px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="" style="width:120px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Tempo dos negócios (no mesmo lugar)"/>
+                                        <label for="title" string="" style="width:220px"/>
+                                        <label for="title" string="Organização de negócio"/>
+                                    </div>
+                                    <div>
+                                        <field name="tempo_negocio" nolabel="1" style="width:350px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                        <label for="title" string="" style="width:100px"/>
+                                        <field name="organizacao_negocio" nolabel="1" style="width:350px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="" style="width:120px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Local do negócio (fixos e embulantes)"/>
+                                        <label for="title" string="" style="width:210px"/>
+                                        <label for="title" string="Transparência na informação"/>
+                                    </div>
+                                    <div>
+                                        <field name="local_negocio_fixos" nolabel="1" style="width:350px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                        <label for="title" string="" style="width:100px"/>
+                                        <field name="tranparencia_na_informacao" nolabel="1"
+                                               attrs="{'readonly':[('estado','=', '3')]}" style="width:350px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="" style="width:120px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Tamanho do negócio"/>
+                                    </div>
+                                    <div>
+                                        <field name="tamanho_negocio" nolabel="1" style="width:350px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="" style="width:120px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" style="color:Blue; font-weight: bold;"
+                                               string="Reputação________________________________________"/>
+                                        <label for="title" string="" style="width:90px"/>
+                                        <label for="title" style="color:Blue; font-weight: bold;"
+                                               string="Históricos de pagamento__________________________"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Referência de vizinhos sobre o cliente"/>
+                                        <label for="title" string="" style="width:210px"/>
+                                        <label for="title" string="Consulta catastral na IMF, em outras IMFs"/>
+                                    </div>
+                                    <div>
+                                        <field name="ref_vizin_sobr_client" nolabel="1" style="width:350px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                        <label for="title" string="" style="width:100px"/>
+                                        <field name="consult_catastral" nolabel="1" style="width:350px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="" style="width:120px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Situação na esfera familiar"/>
+                                    </div>
+                                    <div>
+                                        <field name="situacao_na_esfera_familiar" nolabel="1" style="width:350px"
+                                               attrs="{'readonly':[('estado','=', '3')]}"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="" style="width:120px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Impressão do agente sobre o cliente"/>
+                                    </div>
+                                    <div>
+                                        <field name="imprissao_do_agente_sob_cliente" nolabel="1"
+                                               attrs="{'readonly':[('estado','=', '3')]}" style="width:350px"/>
+                                    </div>
+                                </page>
+                                <page string="Parecer Agente"
+                                      attrs="{'invisible':[('util_agent','!=',True)]}"><!-- attrs="{'invisible':[('util_agent','!=',True)]}"-->
+                                    <div>
+                                        <label for="title" string="" style="width:120px"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Agente"/>
+                                        <field name="utilizador_id" nolabel="1" style="width:600px" readonly="1"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="" style="width:120px"/>
+                                    </div>
+                                    <div attrs="{'invisible':[('estado','=', '3')]}">
+                                        <button name="fluxo_caixa_mensal" type="object" string="Fluxo Caixa Mensal"
+                                                class="btn-primary"/>
+                                        <label for="title" string="" style="width:120px"/>
+                                        <button name="balanco" type="object" string="Balanço"
+                                                class="btn-primary"/>
+                                        <label for="title" string="" style="width:120px"/>
+                                        <button name="comportamento_das_vendas" type="object"
+                                                string="Comportamento das vendas"
+                                                attrs="{'invisible':[('setor','!=', '1')]}" class="btn-primary"/>
+                                    </div>
+                                    <div>
+                                        <label for="title" string="" style="width:120px"/>
+                                    </div>
+                                    <div attrs="{'invisible':['|',('tem_balanco','!=',True), '&amp;', ('tem_fluxo','!=',True)]}">
+                                        <label for="title"
+                                               string="Conclusão_______________________________________________________________________________________________________"
+                                               style="color:Blue; font-weight: bold;"/>
+                                    </div>
+                                    <div attrs="{'invisible':['|', ('tem_balanco','!=',True), '&amp;', ('tem_fluxo','!=',True)]}"><!---->
+                                        <field name="tipo" widget="radio" options="{'horizontal': true}"
+                                               attrs="{'readonly':[('estado','=', '3')], 'required':[('tem_fluxo','=',True), ('tem_balanco','=',True)]}"/><!---->
+                                    </div>
+                                    <div attrs="{'invisible':['|', ('tem_balanco','!=',True), '&amp;', ('tem_fluxo','!=',True)]}"><!---->
+                                        <label for="title" string="Valor"/>
+                                        <field name="valor_gestor" nolabel="1" style="width:260px"
+                                               attrs="{'readonly':[('estado','=', '3')], 'required':[('tem_fluxo','=',True), ('tem_balanco','=',True)]}"/><!---->
+                                        <label for="title" string="" style="width:120px"/>
+                                        <label for="title" string="Valor de prestação"/>
+                                        <field name="valor_prestacao" nolabel="1" style="width:260px"
+                                               attrs="{'readonly':[('estado','=', '3')], 'required':[('tem_fluxo','=',True), ('tem_balanco','=',True)]}"/><!---->
+                                        <label for="title" string="" style="width:20px"/>
+                                    </div>
+                                    <div attrs="{'invisible':['|', ('tem_balanco','!=',True), '&amp;', ('tem_fluxo','!=',True)]}"><!-- -->
+                                        <label for="title" string="Prazo"/>
+                                        <field name="prazo" nolabel="1" style="width:260px"
+                                               attrs="{'readonly':[('estado','=', '3')], 'required':[('tem_fluxo','=',True), ('tem_balanco','=',True)]}"/><!---->
+                                        <label for="title" string="" style="width:120px"/>
+                                        <label for="title" string="Periodicidade" style="width:110px"/>
+                                        <field name="periodicidade_agent" nolabel="1" style="width:260px"
+                                               attrs="{'readonly':[('estado','=', '3')], 'required':[('tem_fluxo','=',True), ('tem_balanco','=',True)]}"/><!---->
+                                    </div>
+                                    <div>
+                                        <label for="title" string="Parecer"
+                                               attrs="{'invisible':['|', ('tem_balanco','!=',True), '&amp;', ('tem_fluxo','!=',True)]}"/>
+                                    </div>
+                                    <div>
+                                        <field name="parecer" nolabel="1" style="width:800px"
+                                               attrs="{'readonly':[('estado','=', '3')], 'required':[('tem_fluxo','=',True), ('tem_balanco','=',True)], 'invisible':['|', ('tem_balanco','!=',True), '&amp;', ('tem_fluxo','!=',True)]}"/><!---->
+                                    </div>
+                                    <div>
+                                        <label for="title" string="" style="width:120px"/>
+                                    </div>
+
+                                    <div attrs="{'invisible':['|', ('tem_balanco','!=',True), '&amp;', ('tem_fluxo','!=',True)]}">
+                                        <label for="title" string="Informações Adicionais"/>
+                                    </div>
+                                    <div>
+                                        <field name="info_adicion" nolabel="1" style="width:800px"
+                                               attrs="{'readonly':[('estado','=', '3')], 'invisible':['|', ('tem_balanco','!=',True), '&amp;', ('tem_fluxo','!=',True)], 'required':[('tem_fluxo','=',True), ('tem_balanco','=',True)]}"/><!---->
+                                    </div>
+                                    <div>
+                                        <field name="submeter"
+                                               nolabel="1"
+                                               attrs="{'readonly':[('estado','=', '3')], 'invisible':['|', ('tem_fluxo','!=',True), '&amp;', ('tem_balanco','!=',True)]}"/><!-- -->
+                                        <label for="title"
+                                               string="Submeter para Aprovação do Gestor"
+                                               attrs="{'invisible':['|', ('tem_balanco','!=',True), '&amp;', ('tem_fluxo','!=',True)]}"/><!---->
+                                    </div>
+                                </page>
+                            </notebook>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="form_solic_search_view" model="ir.ui.view">
+            <field name="name">Todus.lug.search.view</field>
+            <field name="model">solicitacao.credito</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name_client"/>
+                    <field name="id"/>
+                </search>
+            </field>
+        </record>
+        <record id="solicitacao_credito_tree" model="ir.ui.view">
+            <field name="name">Solicitação de Crédito</field>
+            <field name="model">solicitacao.credito</field>
+            <field name="arch" type="xml">
+                <tree string="Solicitação de Crédito">
+                    <field name="codigo"/>
+                    <field name="cod_client"/>
+                    <!--<field name="name_client"/>
+                    <field name="declaracoes_fiancas_ids"/>-->
+                    <field name="identificacao_proponente"/>
+                    <field name="data"/>
+                    <field name="valor_solicitado"/>
+                    <field name="estado"/>
+                    <field name="periodicidade"/>
+                    <field name="utilizador_id"/>
+                    <field name="id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="pidido_solic_codigo" model="ir.sequence">
+            <field name="name">Solicitação de Crédito</field>
+            <field name="code">solicitacaoCredito.codigo</field>
+            <field name="prefix"></field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="sequ_quota" model="ir.sequence">
+            <field name="name">So licitação Quota</field>
+            <field name="code">quota.quota</field>
+            <field name="prefix">SOL-%(range_year)s/</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="solicitac_credito_act_window" model="ir.actions.act_window">
+            <field name="name">Solicitação de Crédito</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">solicitacao.credito</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Criar um novo Solicitação de Crédito.
+                </p>
+                <p>
+                    Organize suas atividades (planeje tarefas, acompanhe problemas, planilhas de Solicitação de Crédito)
+                    para projetos internos, pessoais ou de clientes.
+                </p>
+            </field>
+        </record>
+        <!--This Menu Item must have a parent and an action-->
+        <menuitem id="solicitacao_credito_menu" name="Solicitação de Crédito" parent="gestao_credito_menu"
+                  action="solicitac_credito_act_window" sequence="80"/>
+
+
+        <record id="plano_aplicacao_form" model="ir.ui.view">
+            <field name="name">Plano Aplicação</field>
+            <field name="model">plano.aplicacao</field>
+            <field name="arch" type="xml">
+                <form string="Plano Aplicação">
+                    <sheet>
+                        <div>
+                            <label for="title" string="Item" style="width:100px"/>
+                            <field name="item" style="width:700px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Unidade Medida"/>
+                            <field name="unidade_id" style="width:260px"/>
+                            <label for="title" string="" style="width:80px"/>
+                            <label for="title" string="Preço Unitário"/>
+                            <field name="preco_unit" style="width:260px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Quantidade" style="width:100px"/>
+                            <field name="quantidade" style="width:260px"/>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="plano_aplicacao_tree" model="ir.ui.view">
+            <field name="name">Plano Aplicação</field>
+            <field name="model">plano.aplicacao</field>
+            <field name="arch" type="xml">
+                <tree string="Plano Aplicação">
+                    <field name="item"/>
+                    <field name="unidade_id"/>
+                    <field name="preco_unit"/>
+                    <field name="quantidade"/>
+                </tree>
+            </field>
+        </record>
+        <record id="plano_aplicacao_act_window" model="ir.actions.act_window">
+            <field name="name">Plano Aplicação</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">plano.aplicacao</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+        <!--<menuitem id="plano_aplic_men" name="PLANO APLICAÇÃO" parent="gestao_credito_menu"
+                  action="plano_aplicacao_act_window" sequence="80"/>-->
+
+        <record id="declaracoes_bens_form" model="ir.ui.view">
+            <field name="name">Declarações de Bens</field>
+            <field name="model">declaracoes.bens</field>
+            <field name="arch" type="xml">
+                <form string="Declarações de Bens">
+                    <sheet>
+                        <div>
+                            <label for="title" string="Item" style="width:100px"/>
+                            <field name="item" style="width:700px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Item"/>
+                            <field name="item" style="width:260px"/>
+                            <label for="title" string="" style="width:80px"/>
+                            <label for="title" string="Valor"/>
+                            <field name="valor" style="width:260px"/>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="decl_tree" model="ir.ui.view">
+            <field name="name">Declarações de Bens</field>
+            <field name="model">declaracoes.bens</field>
+            <field name="arch" type="xml">
+                <tree string="Declarações de Bens">
+                    <field name="item"/>
+                    <field name="valor"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="decla_bens_act_window" model="ir.actions.act_window">
+            <field name="name">Declarações de Bens</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">declaracoes.bens</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+        <!--<menuitem id="decl_bens" name="DECLARAÇÃO DE BENS" parent="gestao_credito_menu"
+                  action="decla_bens_act_window" sequence="80"/>-->
+
+
+        <record id="declaracoes_fianca_form" model="ir.ui.view">
+            <field name="name">Declarações de Fiança</field>
+            <field name="model">declaracoes.fiancas</field>
+            <field name="arch" type="xml">
+                <form string="Declarações de Fiança">
+                    <sheet>
+                        <div>
+                            <label for="title" string="Nome"/>
+                            <field name="fiador_id" style="width:260px"/>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="decl_fianca_tree" model="ir.ui.view">
+            <field name="name">Declarações de Fiança</field>
+            <field name="model">declaracoes.fiancas</field>
+            <field name="arch" type="xml">
+                <tree string="Declarações de Fiança">
+                    <field name="nome"/>
+
+                </tree>
+            </field>
+        </record>
+        <record id="declaracoes_fianca_act_window" model="ir.actions.act_window">
+            <field name="name">Declarações de Fiança</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">declaracoes.fiancas</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+
+        <!--<menuitem id="dec_fiad" name="DECLARAÇÃO DE FINANÇA" parent="gestao_credito_menu"
+                  action="declaracoes_fianca_act_window" sequence="80"/>-->
+
+        <!--Formulario fluxo de caixa-->
+        <record id="fluxo_caixa_form" model="ir.ui.view">
+            <field name="name">Fluxo de Caixa</field>
+            <field name="model">fluxo.caixa</field>
+            <field name="arch" type="xml">
+                <form string="Fluxo de Caxa">
+                    <!--<header>
+                        <button name="calc_flux" icon="fa-print" string="Flux" type="object"
+                                class="btn-primary"/>
+                    </header>-->
+                    <sheet>
+                        <div>
+                            <label for="title"
+                                   string="_____________________________________________________________________________________________________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                        </div>
+                        <div>
+                            <label for="title" string="" style="width:360px"/>
+                            <label for="title" string="FLUXO DE CAIXA MENSAL"/>
+                        </div>
+                        <div>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                        </div>
+                        <div>
+                            <label for="title" string="" style="width:30px"/>
+                            <label for="title" string="Descrição dos Itens"/>
+                            <label for="title" string="" style="width:160px"/>
+                            <label for="title" string="Valor(ECV)"/>
+                            <label for="title" string="" style="width:160px"/>
+                            <label for="title" string="Descrição dos Itens"/>
+                            <label for="title" string="" style="width:120px"/>
+                            <label for="title" string="Valor(ECV)"/>
+                        </div>
+                        <div>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                        </div>
+                        <div>
+                            <label for="title" string="+ Receitas Operacionais (a)" style="width:270px"/>
+                            <field name="receitas_operacionais" style="color:Blue; width:170px"/>
+                            <label for="title" string="" style="width:5px"/>
+                            <label for="title"
+                                   string="Outras receitas nao-operacionais(d)(familia, aposentadoria, outros)"
+                                   style="width:270px"/>
+                            <field name="outras_receitas_nao_op" style="width:150px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="- Custo Operacionais (b)" style="width:270px"/>
+                            <field name="custo_operacional" style="color:Blue; width:170px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Custos da mercadoria / matéria-prima, insumos"
+                                   style="width:270px"/>
+                            <field name="custo_mercadoria" style="width:170px"/>
+                            <label for="title" string="" style="width:5px"/>
+                            <label for="title"
+                                   string="Outras despesas nao-operacionais(e)(familia, alimentação, saúde, lazer)"
+                                   style="width:270px"/>
+                            <field name="outras_despesas_nao_op" style="width:150px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Pagamento de Pessoal" style="width:270px"/>
+                            <field name="pagamento_pessoal" style="width:170px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Pagamento de transporte, fretes e cargas" style="width:270px"/>
+                            <field name="paga_trasnp_fret_carg" style="width:170px"/>
+                            <label for="title" string="" style="width:5px"/>
+                            <label for="title"
+                                   string="Outras pagamento (f)(prestacoes de lojas,casa,saúde, dízimo,carro)"
+                                   style="width:270px"/>
+                            <field name="outra_presta_lojas_cas_saud" style="width:150px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Água, luz e telefone" style="width:270px"/>
+                            <field name="agua_luz_telef" style="width:170px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Taxas, aluguer e imposto" style="width:270px"/>
+                            <field name="taxas_aluguer_imposto" style="width:170px"/>
+                            <label for="title" string="" style="width:5px"/>
+                            <label for="title" string="Disponibilidade Liquida (g)=(c)+(d)-(e)-(f)"
+                                   style="width:270px"/>
+                            <field name="desponibilidade_liquida" style="color:Blue; width:150px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Outros custos" style="width:270px"/>
+                            <field name="outros_custos" style="width:170px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                        </div>
+                        <div>
+                            <label for="title" string="Lucro Operacional (c)=(a)-(b)" style="width:270px"/>
+                            <field name="lucro_operacional" style="color:Blue; width:170px"/>
+                            <label for="title" string="" style="width:5px"/>
+                            <label for="title" string="Capacidade de Pagamento Mensal(g)*" style="width:150px"/>
+                            <field name="nqualificacao" style="font-weight: bold; width:15px" readonly="1"/>
+                            <label for="title" string="% Qualificação" style="width:100px"/>
+                            <field name="capacidade_pagamento" style="color:Blue; width:150px"/>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="flux_tree" model="ir.ui.view">
+            <field name="name">Fluxo de Caxa</field>
+            <field name="model">fluxo.caixa</field>
+            <field name="arch" type="xml">
+                <tree string="Fluxo de Caxa">
+                    <field name="custo_operacional"/>
+                    <field name="outras_receitas_nao_op"/>
+                </tree>
+            </field>
+        </record>
+        <record id="fluxo_act_window" model="ir.actions.act_window">
+            <field name="name">Fluxo de Caxa</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fluxo.caixa</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="view_type">form</field>
+            <field name="view_id" ref="fluxo_caixa_form"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+
+        <!--<menuitem id="flux_caixa" name="FLUXO DE CAIXA" parent="gestao_credito_menu"
+                  action="fluxo_act_window" sequence="80"/>-->
+
+        <!--Formulario de Balanco-->
+        <record id="balanco_form" model="ir.ui.view">
+            <field name="name">Balanço</field>
+            <field name="model">balanco</field>
+            <field name="arch" type="xml">
+                <form string="Balanço">
+                    <sheet>
+                        <div>
+                            <label for="title"
+                                   string="_____________________________________________________________________________________________________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                        </div>
+                        <div>
+                            <label for="title" string="" style="width:360px"/>
+                            <label for="title" string="BALANÇO"/>
+                        </div>
+                        <div>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                        </div>
+                        <div>
+                            <label for="title" string="" style="width:30px"/>
+                            <label for="title" string="Descrição dos Itens"/>
+                            <label for="title" string="" style="width:160px"/>
+                            <label for="title" string="Valor(ECV)"/>
+                            <label for="title" string="" style="width:160px"/>
+                            <label for="title" string="Descrição dos Itens"/>
+                            <label for="title" string="" style="width:120px"/>
+                            <label for="title" string="Valor(ECV)"/>
+                        </div>
+                        <div>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                        </div>
+                        <div>
+                            <label for="title" string="ACTIVO CIRCULANTE" style="width:275px"/>
+                            <field name="activo_circular" style="color:Blue; width:170px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="" style="width:20px"/>
+                            <label for="title" string="Caixas, bancos, poupanças" style="width:250px"/>
+                            <field name="caixa_banco_poupancas" style="width:170px"/>
+                            <label for="title" string="" style="width:5px"/>
+                            <label for="title" string="PASSIVO CIRCULAR" style="width:270px"/>
+                            <field name="passivo_circular" style="color:Blue; width:150px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="" style="width:20px"/>
+                            <label for="title" string="Contas a receber de Terceiro" style="width:250px"/>
+                            <field name="contas_receb_terceiro" style="width:170px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                        </div>
+                        <div>
+                            <label for="title" string="" style="width:20px"/>
+                            <label for="title" string="Estoques" style="width:250px"/>
+                            <field name="estoques" style="width:170px"/>
+                            <label for="title" string="" style="width:30px"/>
+                            <label for="title" string="Financiamento de empréstimos" style="width:245px"/>
+                            <field name="financiamento_emprestimo" style="width:150px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="" style="width:20px"/>
+                            <label for="title" string="Outros" style="width:250px"/>
+                            <field name="outros" style="width:170px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                        </div>
+                        <div>
+                            <label for="title" string="IMOBILIZADO" style="width:275px"/>
+                            <field name="imobilizado" style="color:Blue; width:170px"/>
+                            <label for="title" string="" style="width:30px"/>
+                            <label for="title" string="Fornecedores" style="width:250px"/>
+                            <field name="fornecidores" style="width:150px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="" style="width:20px"/>
+                            <label for="title" string="Imóveis" style="width:250px"/>
+                            <field name="imoveis" style="width:170px"/>
+                            <label for="title" string="" style="width:30px"/>
+                            <label for="title" string="Adiantamento de Clientes" style="width:250px"/>
+                            <field name="adiantamento_cliente" style="width:150px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="" style="width:20px"/>
+                            <label for="title" string="Maquinas e equipamentos" style="width:250px"/>
+                            <field name="maquina_equipamentos" style="width:170px"/>
+                            <label for="title" string="" style="width:30px"/>
+                            <label for="title" string="Outros" style="width:250px"/>
+                            <field name="outros_passivo" style="width:150px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                        </div>
+                        <div>
+                            <label for="title" string="" style="width:20px"/>
+                            <label for="title" string="Móveis e utensílios" style="width:250px"/>
+                            <field name="moveis_utencilios" style="width:170px"/>
+                            <label for="title" string="" style="width:5px"/>
+                            <label for="title" string="PASSIVO DE LONGO PRAZO" style="width:275px"/>
+                            <field name="passivo_longo_prazo" style="color:Blue; width:150px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                        </div>
+                        <div>
+                            <label for="title" string="" style="width:20px"/>
+                            <label for="title" string="Veículos" style="width:250px"/>
+                            <field name="veiculos" style="width:170px"/>
+                            <label for="title" string="" style="width:30px"/>
+                            <label for="title" string="Financiamento de longo prazo" style="width:250px"/>
+                            <field name="financiamento_longo_prazo" style="width:150px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                        </div>
+                        <div>
+                            <label for="title" string="" style="width:20px"/>
+                            <label for="title" string="Outros" style="width:250px"/>
+                            <field name="outros_imobil" style="width:170px"/>
+                            <label for="title" string="" style="width:5px"/>
+                            <label for="title" string="PATRIMONIO LIQUIDO" style="width:275px"/>
+                            <field name="patrimonio_liquido" style="width:150px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                        </div>
+                        <div>
+                            <label for="title" string="" style="width:20px"/>
+                            <label for="title" string="Activo da familia (terreno...)" style="width:250px"/>
+                            <field name="acdtivo_familia" style="width:170px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="______________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                            <label for="title" string="_______________________" style="color:Blue; font-weight: bold;"/>
+                        </div>
+                        <div>
+                            <label for="title" string="ATIVO TOTAL" style="width:275px"/>
+                            <field name="activo_total" style="color:Blue;width:170px"/>
+                            <label for="title" string="" style="width:5px"/>
+                            <label for="title" string="PASSIVO TOTAL" style="width:275px"/>
+                            <field name="passivo_total" style="color:Blue;width:170px"/>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="decl_fianca_tree" model="ir.ui.view">
+            <field name="name">Balanço</field>
+            <field name="model">balanco</field>
+            <field name="arch" type="xml">
+                <tree string="Balanço">
+                    <field name="id_pedido"/>
+                    <field name="activo_circular"/>
+                </tree>
+            </field>
+        </record>
+        <record id="bal_act_window" model="ir.actions.act_window">
+            <field name="name">Balanço</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">balanco</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="view_type">form</field>
+            <field name="view_id" ref="balanco_form"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+        <!--<menuitem id="balanco" name="BALANÇO" parent="gestao_credito_menu"
+                  action="bal_act_window" sequence="80"/>-->
+
+        <record id="vendas_form" model="ir.ui.view">
+            <field name="name">Vendas</field>
+            <field name="model">vendas</field>
+            <field name="arch" type="xml">
+                <form string="Vendas">
+                    <sheet>
+                        <div>
+                            <label for="title"
+                                   string="_____________________________________________________________________________________________________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                        </div>
+                        <div>
+                            <label for="title" string="" style="width:360px"/>
+                            <label for="title" string="COMPORTAMENTO DAS VENDAS"/>
+                        </div>
+                        <div>
+                            <label for="title"
+                                   string="_____________________________________________________________________________________________________________________________"
+                                   style="color:Blue; font-weight: bold;"/>
+                        </div>
+                        <div>
+                            <label for="title" string="" style="width:150px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="" style="width:150px"/>
+                            <label for="title" string="Situação/Mês" style="width:102px"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <label for="title" string="Jan" style="width:20px"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <label for="title" string="Fev" style="width:20px"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <label for="title" string="Mar" style="width:20px"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <label for="title" string="Abr" style="width:20px"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <label for="title" string="Mai" style="width:20px"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <label for="title" string="Jun" style="width:20px"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <label for="title" string="Jul" style="width:20px"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <label for="title" string="Ago" style="width:20px"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <label for="title" string="Seto" style="width:20px"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <label for="title" string="Out" style="width:20px"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <label for="title" string="Nov" style="width:20px"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <label for="title" string="Dez" style="width:20px"/>
+                        </div>
+                        <div>
+                            <label for="title" string="" style="width:150px"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <label for="title" string="Boas" style="width:102px"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <field name="jan_b" attrs="{'readonly':[('jan_r','!=', False)]}"/>
+                            <field name="control_b" invisible="1"/><!--campo utilizado para controlo-->
+                            <label for="title" string="" style="width:3px"/>
+                            <field name="fev_b"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <field name="mar_b"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <field name="abr_b"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <field name="mai_b"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <field name="jun_b"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <field name="jul_b"/>
+                            <label for="title" string="" style="width:10px"/>
+                            <field name="ago_b"/>
+                            <label for="title" string="" style="width:10px"/>
+                            <field name="set_b"/>
+                            <label for="title" string="" style="width:5px"/>
+                            <field name="out_b"/>
+                            <label for="title" string="" style="width:5px"/>
+                            <field name="nov_b"/>
+                            <label for="title" string="" style="width:5px"/>
+                            <field name="dez_b"/>
+                        </div>
+                        <div>
+                            <label for="title" string="" style="width:150px"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <label for="title" string="Regulares" style="width:102px"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <field name="jan_r" attrs="{'readonly':[('jan_b','!=', False)]}"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <field name="fev_r"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <field name="mar_r"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <field name="abr_r"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <field name="mai_r"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <field name="jun_r"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <field name="jul_r"/>
+                            <label for="title" string="" style="width:10px"/>
+                            <field name="ago_r"/>
+                            <label for="title" string="" style="width:10px"/>
+                            <field name="set_r"/>
+                            <label for="title" string="" style="width:5px"/>
+                            <field name="out_r"/>
+                            <label for="title" string="" style="width:5px"/>
+                            <field name="nov_r"/>
+                            <label for="title" string="" style="width:5px"/>
+                            <field name="dez_r"/>
+                        </div>
+                        <div>
+                            <label for="title" string="" style="width:150px"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <label for="title" string="Péssimas" style="width:102px"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <field name="jan_p" attrs="{'readonly':[('jan_b','!=', False), ('jan_r','!=', True)]}"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <field name="fev_p"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <field name="mar_p"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <field name="abr_p"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <field name="mai_p"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <field name="jun_p"/>
+                            <label for="title" string="" style="width:3px"/>
+                            <field name="jul_p"/>
+                            <label for="title" string="" style="width:10px"/>
+                            <field name="ago_p"/>
+                            <label for="title" string="" style="width:10px"/>
+                            <field name="set_p"/>
+                            <label for="title" string="" style="width:5px"/>
+                            <field name="out_p"/>
+                            <label for="title" string="" style="width:5px"/>
+                            <field name="nov_p"/>
+                            <label for="title" string="" style="width:5px"/>
+                            <field name="dez_p"/>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="vendas_act_window" model="ir.actions.act_window">
+            <field name="name">Vendas</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vendas</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="vendas_form"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

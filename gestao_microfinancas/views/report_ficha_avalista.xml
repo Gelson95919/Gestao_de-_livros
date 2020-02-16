@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="report.paperformat" id="papelformficha_avalista">
+            <field name="name">paperformat.attendance.recap.report</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_width">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">40</field>
+            <field name="margin_right">5</field>
+            <field name="margin_bottom">5</field>
+            <field name="margin_left">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">30</field>
+            <field name="dpi">95</field>
+        </record>
+        <report
+                id="fich_avalista"
+                model="solicitacao.credito"
+                string="Ficha Avalista"
+                name="gestao_microfinancas.ficha_avalista_view"
+                file="gestao_microfinancas.fiadores_form"
+                paperformat="papelformficha_avalista"
+                report_type="qweb-pdf"
+                menu="True"/>
+
+        <template id="ficha_avalista_view">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div style="border:1px solid black; text-center; margin-left: -1px; height: 43px; margin-top:3px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                            <strong>
+                                <h2 class="text-center">FICHA DE AVALISTA</h2>
+                            </strong>
+                        </div>
+                        <div style="border:1px solid black;">
+                            <table class="table table-condensed table-bordered" style="width: 100%">
+                                <thead>
+                                    <th class="text-center" style="width: 3%">Nº</th>
+                                    <th class="text-center" style="width: 5%">ID FIADOR</th>
+                                    <th class="text-center" style="width: 5%">ID PESSOA</th>
+                                    <th class="text-center" style="width: 25%">NOME</th>
+                                    <th class="text-center" style="width: 25%">LOCAL DE TRABALHO</th>
+                                    <th class="text-center" style="width: 10%">CONTATO</th>
+                                    <th class="text-center" style="width: 10%">SALARIO</th>
+                                    <th class="text-center" style="width: 25%">RESIDENCIA</th>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="o.declaracoes_fiancas_ids" t-as="fiad">
+                                        <tr>
+                                            <td>
+                                                <span t-esc="fiad.numero"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-esc="fiad.codigo"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-esc="fiad.pessoa_id"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="fiad.name"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-esc="fiad.lugar_trabalho"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-esc="fiad.telefone"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-esc="fiad.vencimento"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-esc="fiad.residencia"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="report.paperformat" id="paperformat_ficha_aprov_report">
+            <field name="name">paperformat.attendance.recap.report</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_width">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">40</field>
+            <field name="margin_right">5</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">5</field>
+            <field name="header_line" eval="True"/>
+            <field name="header_spacing">30</field>
+            <field name="dpi">90</field>
+        </record>
+        <report
+                id="ficha_aprov_cred"
+                model="acta.comite"
+                string="Ata"
+                name="gestao_microfinancas.ficha_aprov_view"
+                file="gestao_microfinancas.acta_comit_form"
+                paperformat="paperformat_ficha_aprov_report"
+                report_type="qweb-pdf"
+                menu="True"/>
+
+        <template id="ficha_aprov_view">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div style="border-bottom: 0px solid black">
+                            <strong>
+                                <h6 class="text-center">
+                                    SOLME-Associação de Apoio as Iniciativas de Autopromoção
+                                </h6>
+
+                            </strong>
+                            <div style="border:1px solid black; text-center; margin-left: -1px; height: 43px; margin-top:-1px;  width:100%; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                                <strong>
+                                    <h3>FICHA DE APROVAÇÃO DE CRÉDITO</h3>
+                                </strong>
+                            </div>
+                        </div>
+
+                        <div style="border-top: -1px solid black; width:100%; height: 980px; border: 1px solid black; margin: 10px auto;
+                                                                          display: -webkit-box;
+                                                                         -webkit-box-orient: vertical; -webkit-box-pack: right;
+                                                                          display: -moz-box; -moz-box-orient: vertical; ">
+                            <div style="border-right 0px; solid black; margin-left: -1px; height: 43px; margin-top:-1px;  width:854px; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                                <div style="border-right:0px solid black; padding: 8px; margin-top: -1px; margin-left: -1px; width:200px; -webkit-box-flex: 1;">
+                                    <strong>
+                                        <p>Cliente</p>
+                                    </strong>
+                                </div>
+                                <div class="col-xs-5 text-right"
+                                     style="border-right:1px solid black; padding: 8px; width:300px; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0;">
+                                    <p>Nº Emprestimo</p>
+                                </div>
+                                <div style="border:0px solid black; padding: 8px; width:100px; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0;">
+                                    <p>
+                                        <span t-esc="o.numero"/>
+                                    </p>
+                                </div>
+                            </div>
+                            <div style="border-top:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px; width: width:854px; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                                <div style="border-right:1px solid black; padding: 8px; margin-top: -1px; margin-left: -1px; width:200px; -webkit-box-flex: 1;">
+                                    <p>NOME:
+                                        <strong>
+                                            <span t-esc="o.name"/>
+                                        </strong>
+                                    </p>
+                                </div>
+                                <div style="border:0px solid black; padding: 8px; width:200px; margin-top: -1px; margin-left: -1px; -webkit-box-flex: 0;">
+                                    <p>
+                                        Nº BI:
+                                        <!--<strong>
+                                            <span t-esc="o.name"/>
+                                        </strong>-->
+                                    </p>
+                                </div>
+
+                            </div>
+                            <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px; width: width:855px; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                                <div style="border-right:1px solid black; padding: 8px; margin-top: -1px; margin-left: -1px;  width:50%; -webkit-box-flex: 0;">
+                                    <p>
+                                        Nº Cliente:
+                                        <strong>
+                                            <span t-esc="o.codigo_cliente"/>
+                                        </strong>
+                                    </p>
+                                </div>
+                                <div style="border:0px solid black; padding: 8px; margin-top: -1px; margin-left: -1px; width:50%; -webkit-box-flex: 0;">
+                                    <p>Nº Grupo:</p>
+                                </div>
+                            </div>
+                            <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px; width:855px; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: justify;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: justify;">
+                                <div style="border-right:0px solid black; padding: 8px; margin-top: -1px; margin-left: -1px;  width:50%; -webkit-box-flex: 0;">
+                                    <p>
+                                        Endereço:
+                                        <strong>
+                                            <span t-esc="o.endereco_prop"/>
+                                        </strong>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px;  width:854px;; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                                <div style="border-right:1px solid black; padding: 8px; margin-top: -1px; margin-left: -1px;  width:50%; -webkit-box-flex: 0;">
+                                    <p>
+                                        Nº Processo:
+                                        <strong>
+                                            <span t-esc="o.codigo"/>
+                                        </strong>
+                                    </p>
+                                </div>
+                                <div style="border:0px solid black; padding: 8px; margin-top: -1px; margin-left: -1px; width:50%; -webkit-box-flex: 0;">
+                                    <p>Data Entrada:</p>
+                                </div>
+                            </div>
+                            <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px; width:854px;; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                                <div style="border-right:1px solid black; padding: 8px; margin-top: -1px; margin-left: -1px;  width:50%; -webkit-box-flex: 0;">
+                                    <p>
+                                        Montante Solicitado:
+                                        <strong>
+                                            <span t-esc="o.valor_total"/>
+                                        </strong>
+                                    </p>
+                                </div>
+                                <div style="border:0px solid black; padding: 8px; margin-top: -1px; margin-left: -1px; width:50%; -webkit-box-flex: 0;">
+                                    <p>Prazo de Reembolso:
+                                        <strong>
+                                            <span t-esc="o.prazo"/>
+                                        </strong>
+                                    </p>
+                                </div>
+                            </div>
+                            <div style="border:1px solid black; margin-left: -1px; height: 47px; margin-top:-1px; width:854px; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: justify;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: justify;">
+                                <div style="border:0px solid black; padding: 2px; margin-top: -1px; margin-left: -1px;  width:16%;">
+                                    <p>Setor Atividade:</p>
+                                </div>
+                                <div clase="text-center"
+                                     style="border:0px solid black; margin-top: -1px; margin-left: -1px;  width:84%;">
+                                    <p>
+                                        <strong>
+                                            <t t-if="o.setor == '1'">
+                                                <p>Comércio</p>
+                                            </t>
+                                            <t t-if="o.setor == '2'">
+                                                <p>Serviço</p>
+                                            </t>
+                                            <t t-if="o.setor == '3'">
+                                                <p>Produção</p>
+                                            </t>
+                                            <t t-if="o.setor == '4'">
+                                                <p>Agricultura</p>
+                                            </t>
+                                            <t t-if="o.setor == '5'">
+                                                <p>Pesca</p>
+                                            </t>
+                                            <t t-if="o.setor == '6'">
+                                                <p>Piquena Industria</p>
+                                            </t>
+                                            <t t-if="o.setor == '7'">
+                                                <p>Pecuária</p>
+                                            </t>
+                                            <t t-if="o.setor == '8'">
+                                                <p>Agropecuária</p>
+                                            </t>
+                                            <t t-if="o.setor == '9'">
+                                                <p>Consumo</p>
+                                            </t>
+                                            <t t-if="o.setor == '10'">
+                                                <p>Melhoria habitacional</p>
+                                            </t>
+                                            <t t-if="o.setor == '11'">
+                                                <p>Outros</p>
+                                            </t>
+                                        </strong>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-xs-5 text-center" style="border:0px solid black; margin-left: -1px; height: 47px; margin-top:-1px; width:854px; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: justify;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: justify;">
+                                <div style="border-right:0px solid black; padding: 8px; margin-top: -1px; margin-left: -1px;  width:100%;">
+                                    <strong>
+                                        <p>AGENTE DE CRÉDITO</p>
+                                    </strong>
+                                </div>
+                            </div>
+                            <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px; width: width:855px; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: justify;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: justify;">
+                                <div style="border-right:0px solid black; padding: 8px; margin-top: -1px; margin-left: -1px;  width:50%; -webkit-box-flex: 0;">
+                                    <p>Nome:
+                                        <strong>
+                                            <span t-esc="o.nome_agente"/>
+                                        </strong>
+                                    </p>
+                                </div>
+                            </div>
+                            <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px; width: width:855px; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                                <div style="border-right:1px solid black; padding: 8px; margin-top: -1px; margin-left: -1px;  width:50%; -webkit-box-flex: 0;">
+                                    <p>Montante Proposto:
+                                        <strong>
+                                            <span t-esc="o.valor_agente"/>
+                                        </strong>
+                                    </p>
+                                </div>
+                                <div style="border:0px solid black; padding: 8px; margin-top: -1px; margin-left: -1px; width:50%; -webkit-box-flex: 0;">
+                                    <p>Prazo de Reenbolso:
+                                        <strong>
+                                            <span t-esc="o.prazo_agente"/>
+                                        </strong>
+                                    </p>
+                                </div>
+                            </div>
+                            <div style="border:1px solid black; margin-left: -1px; margin-top:-1px; height: 140px; width:855px; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: justify;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: justify;">
+                                <div style="border-right:0px solid black; padding: 8px; margin-top: -1px; margin-left: -1px;  width:400px;  height: 140px; -webkit-box-flex: 0;">
+                                    <p>Parecer:
+                                        <strong>
+                                            <span t-esc="o.parecer_agente"/>
+                                        </strong>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-xs-5 text-center" style="border:0px solid black; margin-left: -1px; height: 47px; margin-top:-1px; width:854px; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: justify;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: justify;">
+                                <div style="border-right:0px solid black; padding: 8px; margin-top: -1px; margin-left: -1px;  width:100%;">
+                                    <strong>
+                                        <p>COMITÉ DE CRÉDITO</p>
+                                    </strong>
+                                </div>
+                            </div>
+                            <div class="col-xs-5 text-center" style="border:1px solid black; margin-left: -1px; height: 47px; margin-top:-1px; width:854px; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: justify;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: justify;">
+                                <div style="border-right:0px solid black; padding: 8px; margin-top: -1px; margin-left: -1px;  width:100%;">
+                                    <strong>
+                                        <p>Condições de crédito</p>
+                                    </strong>
+                                </div>
+                            </div>
+                            <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px; width: width:855px; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                                <div style="border-right:1px solid black; padding: 8px; margin-top: -1px; margin-left: -1px;  width:50%; -webkit-box-flex: 0;">
+                                    <p>Montante:
+                                        <strong>
+                                            <span t-esc="o.valor_total"/>
+                                        </strong>
+                                    </p>
+                                </div>
+                                <div style="border:0px solid black; padding: 8px; margin-top: -1px; margin-left: -1px; width:50%; -webkit-box-flex: 0;">
+                                    <p>Taxa de juro:
+                                        <strong>
+                                            <span t-esc="o.juros"/>
+                                        </strong>
+                                    </p>
+                                </div>
+                            </div>
+                            <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px; width: width:855px; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                                <div style="border-right:1px solid black; padding: 8px; margin-top: -1px; margin-left: -1px;  width:50%; -webkit-box-flex: 0;">
+                                    <p>Taxa comissão:
+                                        <strong>
+                                            <span t-esc="o.valor"/>
+                                        </strong>
+                                    </p>
+                                </div>
+                                <div style="border:0px solid black; padding: 8px; margin-top: -1px; margin-left: -1px; width:50%; -webkit-box-flex: 0;">
+                                    <p>Tipo de Garantia:
+                                        <!--<strong>
+                                            <span t-esc="o.valor"/>
+                                        </strong>-->
+                                    </p>
+                                </div>
+                            </div>
+                            <div style="border:1px solid black; margin-left: -1px; height: 43px; margin-top:-1px; width: width:855px; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: center;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: center;">
+                                <div style="border-right:1px solid black; padding: 8px; margin-top: -1px; margin-left: -1px;  width:20%">
+                                    <p>Metodo de calculo juros:</p>
+                                </div>
+                                <div style="border:0px solid black; padding: 2px; width:15%; margin-top: -20px; margin-left: -1px;">
+                                <p>
+                                    <strong>
+                                        <t t-if="o.metudo_calculo == '1'">
+                                            <p>Decresivo</p>
+                                        </t>
+                                        <t t-if="o.metudo_calculo == '2'">
+                                            <p>Constante</p>
+                                        </t>
+                                        <t t-if="o.metudo_calculo == '3'">
+                                            <p>Simples</p>
+                                        </t>
+                                    </strong>
+                                </p>
+
+                            </div>
+                                <div style="border:0px solid black; padding: 8px; margin-top: -1px; margin-left: -1px; width:64%; -webkit-box-flex: 0;">
+                                    <p>Período de carência:</p>
+                                </div>
+
+                            </div>
+                            <div class="col-xs-5 text-center" style="border:0px solid black; margin-left: -1px; height: 47px; margin-top:-1px; width:854px; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: justify;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: justify;">
+                                <div style="border-right:0px solid black; padding: 8px; margin-top: -1px; margin-left: -1px;  width:100%;">
+                                    <strong>
+                                        <p>PARECER DO COMITÉ</p>
+                                    </strong>
+                                </div>
+                            </div>
+                            <div style="border:1px solid black; margin-left: -1px; height: 80px; margin-top:-1px;width:855px; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: justify;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: justify;">
+                                <div style="border-right:0px solid black; padding: 8px; margin-top: -1px; margin-left: -1px;  width:50%;  height: 140px; -webkit-box-flex: 0;">
+                                    <p>Parecer:</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-5 text-center" style="border:0px solid black; margin-left: -1px; height: 20px; margin-top:-1px; width:854px; display: -webkit-box;
+                                                                         -webkit-box-orient: horizontal; -webkit-box-pack: justify;
+                                                                          display: -moz-box; -moz-box-orient: horizontal;  -moz-box-pack: justify;">
+                                <div style="border-right:0px solid black; padding: 8px; margin-top: -1px; margin-left: -1px;  width:100%;">
+                                    <strong>
+                                        <p>Membros da comição</p>
+                                    </strong>
+                                </div>
+                            </div>
+                            <table style="width: 100%">
+                                <thead>
+                                    <th class="text-center" style="width: 50%; height: 20px;">Nome</th>
+                                    <th class="text-center" style="width: 50%; height: 20px;">Assinatura</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <p>x</p>
+                                            <!--<span t-esc="doc['item']"/>-->
+                                        </td>
+                                        <td class="text-center">
+                                            <p>x</p>
+                                            <!--<span t-esc="doc['unidade_id']"/>-->
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
